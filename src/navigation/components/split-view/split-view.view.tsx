@@ -1,10 +1,13 @@
 import { Dimensions, StyleSheet, View } from "react-native";
-import React, { forwardRef, ReactElement, useEffect, useState } from "react";
+import React, { FC, ReactElement, RefObject, useEffect, useState } from "react";
 import { NavigationContainer, NavigationContainerRef, Theme } from "@react-navigation/native";
 
 type SplitViewProps = {
   masterNavigator: ReactElement;
   detailsNavigator: ReactElement;
+
+  masterRef: RefObject<NavigationContainerRef<Record<string, object>>>;
+  detailsRef: RefObject<NavigationContainerRef<Record<string, object>>>;
 
   theme?: Theme;
   layoutConfig: {
@@ -16,48 +19,46 @@ type SplitViewProps = {
   };
 };
 
-export const SplitView = forwardRef<NavigationContainerRef<ReactNavigation.RootParamList>, SplitViewProps>(
-  (
-    {
-      theme,
-      masterNavigator,
-      detailsNavigator,
-      layoutConfig: { minMasterWidth, defaultMasterWidth, minDetailsWidth, minDetailsVisibleWidth },
-    },
-    ref,
-  ) => {
-    const [isMasterOnly, setIsMasterOnly] = useState(false);
+export const SplitView: FC<SplitViewProps> = ({
+  theme,
+  masterRef,
+  detailsRef,
+  masterNavigator,
+  detailsNavigator,
+  layoutConfig: { minMasterWidth, defaultMasterWidth, minDetailsWidth, minDetailsVisibleWidth },
+}) => {
+  const [isMasterOnly, setIsMasterOnly] = useState(false);
 
-    useEffect(() => {
-      const listener = Dimensions.addEventListener("change", ({ window: { width } }) => {
-        setIsMasterOnly(width < minDetailsVisibleWidth);
-      });
+  useEffect(() => {
+    const listener = Dimensions.addEventListener("change", ({ window: { width } }) => {
+      setIsMasterOnly(width < minDetailsVisibleWidth);
+    });
 
-      return () => listener.remove();
-    }, []);
+    return () => listener.remove();
+  }, []);
 
-    return (
-      <View style={styles.container}>
-        <View
-          style={[
-            { minWidth: minMasterWidth, width: defaultMasterWidth },
-            isMasterOnly && styles.singleMasterNavigator,
-          ]}
-        >
-          <NavigationContainer ref={ref} theme={theme}>
-            {masterNavigator}
+  return (
+    <View style={styles.container}>
+      <View
+        style={[{ minWidth: minMasterWidth, width: defaultMasterWidth }, isMasterOnly && styles.singleMasterNavigator]}
+      >
+        <NavigationContainer ref={masterRef} theme={theme}>
+          {masterNavigator}
+
+          {isMasterOnly ? detailsNavigator : null}
+        </NavigationContainer>
+      </View>
+
+      {!isMasterOnly ? (
+        <View style={[styles.detailsNavigator, { minWidth: minDetailsWidth, borderColor: theme?.colors.border }]}>
+          <NavigationContainer ref={detailsRef} theme={theme}>
+            {detailsNavigator}
           </NavigationContainer>
         </View>
-
-        {!isMasterOnly ? (
-          <View style={[styles.detailsNavigator, { minWidth: minDetailsWidth, borderColor: theme?.colors.border }]}>
-            <NavigationContainer theme={theme}>{detailsNavigator}</NavigationContainer>
-          </View>
-        ) : null}
-      </View>
-    );
-  },
-);
+      ) : null}
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {

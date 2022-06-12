@@ -5,4 +5,7 @@ export enum ScreenName {
   // Settings
   SETTINGS_MAIN = "[Settings] Main",
   SETTINGS_LANGUAGE = "[Settings] Language",
+
+  // Tips
+  TIPS_MAIN = "[Tips] Main",
 }

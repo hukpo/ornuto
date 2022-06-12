@@ -1,14 +1,14 @@
 import React, { FC } from "react";
-import { useNavigation } from "@react-navigation/native";
+import { container } from "tsyringe";
 import { StyleSheet, View, Text, Button } from "react-native";
 
-import { ScreenName } from "@/navigation";
+import { Navigation, ScreenName } from "@/navigation";
 
 export const SettingsMain: FC = () => {
-  const navigation = useNavigation();
+  const navigation = container.resolve(Navigation);
 
   const onOpenLanguagePress = () => {
-    navigation.navigate(ScreenName.SETTINGS_LANGUAGE, {});
+    navigation.navigate(ScreenName.SETTINGS_LANGUAGE);
   };
 
   return (
