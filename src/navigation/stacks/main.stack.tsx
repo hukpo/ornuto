@@ -18,11 +18,8 @@ export const MainStack: FC = () => {
       MasterNavigator={MasterStack}
       DetailsNavigator={DetailsStack}
       layoutConfig={{
-        minMasterWidth: 275,
-        defaultMasterWidth: 400,
-
-        minDetailsWidth: 275,
-        minDetailsVisibleWidth: 650,
+        minMasterWidth: 400,
+        minWindowWidthForDetails: 850,
       }}
     />
   );

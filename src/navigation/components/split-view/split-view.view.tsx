@@ -16,10 +16,7 @@ export type SplitViewProps = {
   theme?: Theme;
   layoutConfig: {
     minMasterWidth: number;
-    defaultMasterWidth: number;
-
-    minDetailsWidth: number;
-    minDetailsVisibleWidth: number;
+    minWindowWidthForDetails: number;
   };
 };
 
@@ -29,39 +26,33 @@ export const SplitView: FC<SplitViewProps> = ({
   detailsRef,
   MasterNavigator,
   DetailsNavigator,
-  layoutConfig: { minMasterWidth, defaultMasterWidth, minDetailsWidth, minDetailsVisibleWidth },
+  layoutConfig: { minMasterWidth, minWindowWidthForDetails },
 }) => {
-  const [isMasterOnly, setIsMasterOnly] = useState(Dimensions.get("window").width < minDetailsVisibleWidth);
+  const [isMasterOnly, setIsMasterOnly] = useState(Dimensions.get("window").width < minWindowWidthForDetails);
 
   useEffect(() => {
     const listener = Dimensions.addEventListener("change", ({ window: { width } }) => {
-      setIsMasterOnly(width < minDetailsVisibleWidth);
+      setIsMasterOnly(width < minWindowWidthForDetails);
     });
 
     return () => listener.remove();
   }, []);
 
-  if (isMasterOnly) {
-    return (
-      <NavigationContainer ref={masterRef} theme={theme}>
-        <MasterNavigator isMasterOnly />
-      </NavigationContainer>
-    );
-  }
-
   return (
     <View style={styles.container}>
-      <View style={{ minWidth: minMasterWidth, width: defaultMasterWidth }}>
+      <View style={[{ minWidth: minMasterWidth }, isMasterOnly && styles.masterOnlyNavigator]}>
         <NavigationContainer ref={masterRef} theme={theme}>
-          <MasterNavigator />
+          <MasterNavigator isMasterOnly={isMasterOnly} />
         </NavigationContainer>
       </View>
 
-      <View style={[styles.detailsNavigator, { minWidth: minDetailsWidth, borderColor: theme?.colors.border }]}>
-        <NavigationContainer ref={detailsRef} theme={theme}>
-          <DetailsNavigator />
-        </NavigationContainer>
-      </View>
+      {!isMasterOnly ? (
+        <View style={[styles.detailsNavigator, { borderColor: theme?.colors.border }]}>
+          <NavigationContainer ref={detailsRef} theme={theme}>
+            <DetailsNavigator />
+          </NavigationContainer>
+        </View>
+      ) : null}
     </View>
   );
 };
@@ -70,6 +61,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "row",
+  },
+
+  masterOnlyNavigator: {
+    flex: 1,
   },
 
   detailsNavigator: {
