@@ -1,22 +1,22 @@
 import React, { FC } from "react";
 import { container } from "tsyringe";
 
-import { DARK_THEME } from "@/themes";
 import { Navigation } from "../utils";
+import { LIGHT_THEME } from "@/themes";
 import { SplitView } from "../components";
+import { MasterStack } from "./master.stack";
 import { DetailsStack } from "./details.stack";
-import { BottomTabsStack } from "./bottom-tabs.stack";
 
 export const MainStack: FC = () => {
   const navigation = container.resolve(Navigation);
 
   return (
     <SplitView
-      // theme={DARK_THEME}
+      theme={LIGHT_THEME}
       masterRef={navigation.masterRef}
       detailsRef={navigation.detailsRef}
-      masterNavigator={<BottomTabsStack />}
-      detailsNavigator={<DetailsStack />}
+      MasterNavigator={MasterStack}
+      DetailsNavigator={DetailsStack}
       layoutConfig={{
         minMasterWidth: 275,
         defaultMasterWidth: 400,

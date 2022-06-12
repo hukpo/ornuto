@@ -10,8 +10,10 @@ export class Navigation {
   detailsRef = createRef<NavigationContainerRef<Record<string, object>>>();
 
   navigate(screenName: ScreenName): void {
-    console.log("--->", screenName);
-
-    this.detailsRef.current?.navigate(screenName);
+    if (this.detailsRef.current) {
+      this.detailsRef.current.navigate(screenName, {});
+    } else {
+      this.masterRef.current?.navigate(screenName, {});
+    }
   }
 }
