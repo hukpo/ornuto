@@ -51,7 +51,7 @@ export const SplitView: FC<SplitViewProps> = ({
 
   return (
     <View style={styles.container}>
-      <View style={[styles.masterNavigator, { minWidth: minMasterWidth, width: defaultMasterWidth }]}>
+      <View style={{ minWidth: minMasterWidth, width: defaultMasterWidth }}>
         <NavigationContainer ref={masterRef} theme={theme}>
           <MasterNavigator />
         </NavigationContainer>
@@ -70,10 +70,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "row",
-  },
-
-  masterNavigator: {
-    flex: 1,
   },
 
   detailsNavigator: {
