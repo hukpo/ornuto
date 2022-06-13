@@ -1,1 +1,1 @@
-export * from "./main.view";
+export * from './main.view';

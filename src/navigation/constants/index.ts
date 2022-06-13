@@ -1,2 +1,2 @@
-export * from "./stack-name.constant";
-export * from "./screen-name.constant";
+export * from './stack-name.constant';
+export * from './screen-name.constant';

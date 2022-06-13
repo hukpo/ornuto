@@ -1,26 +1,28 @@
-import React, { FC } from "react";
-import { container } from "tsyringe";
+import React from 'react';
+import { container } from 'tsyringe';
+import { observer } from 'mobx-react-lite';
 
-import { Navigation } from "../utils";
-import { LIGHT_THEME } from "@/themes";
-import { SplitView } from "../components";
-import { MasterStack } from "./master.stack";
-import { DetailsStack } from "./details.stack";
+import { Navigation } from '../utils';
+import { useInitTheme } from '@/themes';
+import { SplitView } from '../components';
+import { MasterStack } from './master.stack';
+import { DetailsStack } from './details.stack';
 
-export const MainStack: FC = () => {
+export const MainStack = observer(() => {
+  const theme = useInitTheme();
   const navigation = container.resolve(Navigation);
 
   return (
     <SplitView
-      theme={LIGHT_THEME}
+      theme={theme}
       masterRef={navigation.masterRef}
       detailsRef={navigation.detailsRef}
       MasterNavigator={MasterStack}
       DetailsNavigator={DetailsStack}
       layoutConfig={{
         minMasterWidth: 400,
-        minWindowWidthForDetails: 850,
+        minWindowWidthForDetails: 650,
       }}
     />
   );
-};
+});

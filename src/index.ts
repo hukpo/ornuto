@@ -1,1 +1,1 @@
-export { MainStack } from "./navigation/stacks";
+export { MainStack } from './navigation/stacks';

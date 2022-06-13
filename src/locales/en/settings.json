@@ -1,0 +1,14 @@
+{
+  "settings": "Settings",
+
+  "appearance": "Appearance",
+  "language": "Language",
+
+  "nightMode": "Night Mode",
+  "autoNightMode": "Auto-Night Mode",
+
+  "system": "System",
+  "disabled": "Disabled",
+
+  "logOut": "Log Out"
+}

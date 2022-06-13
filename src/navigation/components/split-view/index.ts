@@ -1,1 +1,1 @@
-export * from "./split-view.view";
+export * from './split-view.view';

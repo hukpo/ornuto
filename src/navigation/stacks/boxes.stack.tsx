@@ -1,8 +1,8 @@
-import React, { FC } from "react";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import React, { FC } from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { BoxesMain } from "@/modules";
-import { ScreenName } from "../constants";
+import { BoxesMain } from '@/modules';
+import { ScreenName } from '../constants';
 
 const { Navigator, Screen } = createNativeStackNavigator();
 

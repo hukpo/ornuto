@@ -1,1 +1,1 @@
-export { SettingsMain, SettingsLanguage } from "./screens";
+export { SettingsMain, SettingsLanguage } from './screens';

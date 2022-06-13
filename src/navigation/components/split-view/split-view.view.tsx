@@ -1,6 +1,6 @@
-import { Dimensions, StyleSheet, View } from "react-native";
-import React, { ComponentType, FC, RefObject, useEffect, useState } from "react";
-import { NavigationContainer, NavigationContainerRef, Theme } from "@react-navigation/native";
+import { Dimensions, StyleSheet, View } from 'react-native';
+import React, { ComponentType, FC, RefObject, useEffect, useState } from 'react';
+import { NavigationContainer, NavigationContainerRef, Theme } from '@react-navigation/native';
 
 export type MasterNavigatorProps = {
   isMasterOnly?: boolean;
@@ -28,15 +28,17 @@ export const SplitView: FC<SplitViewProps> = ({
   DetailsNavigator,
   layoutConfig: { minMasterWidth, minWindowWidthForDetails },
 }) => {
-  const [isMasterOnly, setIsMasterOnly] = useState(Dimensions.get("window").width < minWindowWidthForDetails);
+  const [isMasterOnly, setIsMasterOnly] = useState(
+    Dimensions.get('window').width < minWindowWidthForDetails,
+  );
 
   useEffect(() => {
-    const listener = Dimensions.addEventListener("change", ({ window: { width } }) => {
+    const listener = Dimensions.addEventListener('change', ({ window: { width } }) => {
       setIsMasterOnly(width < minWindowWidthForDetails);
     });
 
     return () => listener.remove();
-  }, []);
+  }, [minWindowWidthForDetails]);
 
   return (
     <View style={styles.container}>
@@ -60,7 +62,7 @@ export const SplitView: FC<SplitViewProps> = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "row",
+    flexDirection: 'row',
   },
 
   masterOnlyNavigator: {

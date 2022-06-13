@@ -1,1 +1,1 @@
-export { TipsMain } from "./screens";
+export { TipsMain } from './screens';

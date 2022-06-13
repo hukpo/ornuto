@@ -1,10 +1,12 @@
-import React, { FC } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import React, { FC } from 'react';
+import { StyleSheet, View } from 'react-native';
+
+import { Txt } from '@/ui-kit';
 
 export const TipsMain: FC = () => {
   return (
     <View style={styles.container}>
-      <Text>Tips</Text>
+      <Txt>Tips</Txt>
     </View>
   );
 };
@@ -12,7 +14,7 @@ export const TipsMain: FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

@@ -1,0 +1,9 @@
+{
+  "boxes": "Boxes",
+
+  "createFolder": "$t(common:create) Folder",
+  "createChat": "$t(common:create) Chat",
+
+  "folderName": "Folder Name",
+  "chatName": "Chat Name"
+}

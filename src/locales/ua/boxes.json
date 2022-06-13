@@ -1,0 +1,9 @@
+{
+  "boxes": "Коробки",
+
+  "createFolder": "$t(common:create) папку",
+  "createChat": "$t(common:create) чат",
+
+  "folderName": "Назва папки",
+  "chatName": "Назва чату"
+}

@@ -1,8 +1,9 @@
-import "reflect-metadata";
+import 'reflect-metadata';
 
-import React from "react";
+import React from 'react';
 
-import { MainStack } from "./src";
+import './src/locales';
+import { MainStack } from './src';
 
 export default function App() {
   return <MainStack />;

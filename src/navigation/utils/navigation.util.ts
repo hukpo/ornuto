@@ -1,8 +1,8 @@
-import { createRef } from "react";
-import { singleton } from "tsyringe";
-import { NavigationContainerRef } from "@react-navigation/native";
+import { createRef } from 'react';
+import { singleton } from 'tsyringe';
+import { NavigationContainerRef } from '@react-navigation/native';
 
-import { ScreenName } from "../constants";
+import { ScreenName } from '../constants';
 
 @singleton()
 export class Navigation {

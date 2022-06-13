@@ -1,8 +1,9 @@
-import React, { FC } from "react";
-import { container } from "tsyringe";
-import { StyleSheet, View, Text, Button } from "react-native";
+import React, { FC } from 'react';
+import { container } from 'tsyringe';
+import { StyleSheet, View, Button } from 'react-native';
 
-import { Navigation, ScreenName } from "@/navigation";
+import { Txt } from '@/ui-kit';
+import { Navigation, ScreenName } from '@/navigation';
 
 export const SettingsMain: FC = () => {
   const navigation = container.resolve(Navigation);
@@ -13,7 +14,7 @@ export const SettingsMain: FC = () => {
 
   return (
     <View style={styles.container}>
-      <Text>List</Text>
+      <Txt>List</Txt>
 
       <Button title="Open language" onPress={onOpenLanguagePress} />
     </View>

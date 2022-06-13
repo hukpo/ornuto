@@ -1,5 +1,5 @@
-import { ScreenName } from "./screen-name.constant";
-import { StackName } from "./stack-name.constant";
+import { ScreenName } from './screen-name.constant';
+import { StackName } from './stack-name.constant';
 
 type StacksConfig = Partial<Record<StackName, ScreenName[]>>;
 

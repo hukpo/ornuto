@@ -1,1 +1,1 @@
-export * from "./main.stack";
+export * from './main.stack';
