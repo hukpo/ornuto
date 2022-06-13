@@ -3,10 +3,10 @@ import { StyleSheet, View } from 'react-native';
 
 import { Txt } from '@/ui-kit';
 
-export const BoxesMain: FC = () => {
+export const SettingsAppearance: FC = () => {
   return (
     <View style={styles.container}>
-      <Txt>Boxes Main</Txt>
+      <Txt>Appearance</Txt>
     </View>
   );
 };

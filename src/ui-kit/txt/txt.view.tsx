@@ -1,3 +1,4 @@
+import { useUI } from '@/themes';
 import React, { FC, useState } from 'react';
 import { ColorValue, StyleProp, StyleSheet, Text as RNText, TextStyle } from 'react-native';
 
@@ -9,6 +10,7 @@ type TxtProps = {
 };
 
 export const Txt: FC<TxtProps> = ({ style, onPress, children, numberOfLines, highlightColor }) => {
+  const { colors } = useUI();
   const [highlightActive, setHighlightActive] = useState(false);
 
   const toggleHighlightActive = () => {
@@ -24,6 +26,7 @@ export const Txt: FC<TxtProps> = ({ style, onPress, children, numberOfLines, hig
       onPress={onPress}
       style={[
         styles.text,
+        { color: colors.text },
         style,
         !!highlightColor &&
           (onPress ? highlightActive : true) && { backgroundColor: highlightColor },

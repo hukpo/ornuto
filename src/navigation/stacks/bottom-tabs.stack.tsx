@@ -29,16 +29,16 @@ export const BottomTabsStack: FC = () => {
         name={StackName.BOXES}
         component={BoxesStack}
         options={{
-          tabBarLabel: t('boxes:boxes'),
           tabBarIcon: BoxesIcon,
+          tabBarLabel: t('boxes:boxes'),
         }}
       />
       <Screen
         name={StackName.SETTINGS}
         component={SettingsStack}
         options={{
-          tabBarLabel: t('settings:settings'),
           tabBarIcon: SettingsIcon,
+          tabBarLabel: t('settings:settings'),
         }}
       />
     </Navigator>
