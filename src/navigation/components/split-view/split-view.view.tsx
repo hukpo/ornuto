@@ -42,7 +42,7 @@ export const SplitView: FC<SplitViewProps> = ({
 
   return (
     <View style={styles.container}>
-      <View style={[{ minWidth: minMasterWidth }, isMasterOnly && styles.masterOnlyNavigator]}>
+      <View style={isMasterOnly ? styles.masterOnlyNavigator : { minWidth: minMasterWidth }}>
         <NavigationContainer ref={masterRef} theme={theme}>
           <MasterNavigator isMasterOnly={isMasterOnly} />
         </NavigationContainer>
