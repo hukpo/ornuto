@@ -1,5 +1,5 @@
 import { createRef } from 'react';
-import { container } from 'tsyringe';
+import { singleton } from 'tsyringe';
 import { NavigationContainerRef } from '@react-navigation/native';
 
 import { ScreenParams } from '../types';
@@ -17,6 +17,5 @@ class NavigationHelper<P extends Record<T, any>, T extends string = string> {
   }
 }
 
+@singleton()
 export class Navigation extends NavigationHelper<ScreenParams> {}
-
-container.register(Navigation, { useValue: new Navigation() });
