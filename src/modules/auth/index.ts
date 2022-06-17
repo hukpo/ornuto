@@ -1,0 +1,1 @@
+export { AuthPhone } from './screens';
