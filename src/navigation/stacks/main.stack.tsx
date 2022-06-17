@@ -1,28 +1,47 @@
 import React from 'react';
-import { container } from 'tsyringe';
 import { observer } from 'mobx-react-lite';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { Navigation } from '../utils';
+import { AuthPhone } from '@/modules';
 import { useInitTheme } from '@/themes';
+import { ScreenName } from '../constants';
 import { SplitView } from '../components';
 import { MasterStack } from './master.stack';
 import { DetailsStack } from './details.stack';
+import { detailsRef, masterRef } from '../utils';
+
+const { Navigator, Screen } = createNativeStackNavigator();
 
 export const MainStack = observer(() => {
   const theme = useInitTheme();
-  const navigation = container.resolve(Navigation);
 
   return (
-    <SplitView
-      theme={theme}
-      masterRef={navigation.masterRef}
-      detailsRef={navigation.detailsRef}
-      MasterNavigator={MasterStack}
-      DetailsNavigator={DetailsStack}
-      layoutConfig={{
-        minMasterWidth: 400,
-        minWindowWidthForDetails: 650,
-      }}
-    />
+    <NavigationContainer ref={masterRef} theme={theme}>
+      <Navigator>
+        <Screen name={ScreenName.SPLIT_VIEW} options={{ headerShown: false }}>
+          {() => (
+            <SplitView
+              theme={theme}
+              detailsRef={detailsRef}
+              MasterNavigator={MasterStack}
+              DetailsNavigator={DetailsStack}
+              layoutConfig={{
+                minMasterWidth: 400,
+                minWindowWidthForDetails: 650,
+              }}
+            />
+          )}
+        </Screen>
+
+        <Screen
+          name={ScreenName.AUTH_PHONE}
+          component={AuthPhone}
+          options={{
+            fullScreenGestureEnabled: true,
+          }}
+        />
+      </Navigator>
+    </NavigationContainer>
   );
 });

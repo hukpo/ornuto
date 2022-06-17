@@ -15,13 +15,13 @@ export class SettingsMainVm {
   openAppearance() {
     this._logger.info('openAppearance');
 
-    this._navigation!.navigate(ScreenName.SETTINGS_APPEARANCE);
+    this._navigation!.push(ScreenName.SETTINGS_APPEARANCE);
   }
 
   openLanguage() {
     this._logger.info('openLanguage');
 
-    this._navigation!.navigate(ScreenName.SETTINGS_LANGUAGE);
+    this._navigation!.push(ScreenName.SETTINGS_LANGUAGE);
   }
 
   logOut() {

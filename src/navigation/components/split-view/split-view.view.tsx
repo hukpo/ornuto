@@ -10,7 +10,6 @@ export type SplitViewProps = {
   MasterNavigator: ComponentType<MasterNavigatorProps>;
   DetailsNavigator: ComponentType;
 
-  masterRef: RefObject<NavigationContainerRef<Record<string, object>>>;
   detailsRef: RefObject<NavigationContainerRef<Record<string, object>>>;
 
   theme?: Theme;
@@ -22,7 +21,6 @@ export type SplitViewProps = {
 
 export const SplitView: FC<SplitViewProps> = ({
   theme,
-  masterRef,
   detailsRef,
   MasterNavigator,
   DetailsNavigator,
@@ -43,14 +41,12 @@ export const SplitView: FC<SplitViewProps> = ({
   return (
     <View style={styles.container}>
       <View style={isMasterOnly ? styles.masterOnlyNavigator : { minWidth: minMasterWidth }}>
-        <NavigationContainer ref={masterRef} theme={theme}>
-          <MasterNavigator isMasterOnly={isMasterOnly} />
-        </NavigationContainer>
+        <MasterNavigator isMasterOnly={isMasterOnly} />
       </View>
 
       {!isMasterOnly ? (
         <View style={[styles.detailsNavigator, { borderColor: theme?.colors.border }]}>
-          <NavigationContainer ref={detailsRef} theme={theme}>
+          <NavigationContainer independent ref={detailsRef} theme={theme}>
             <DetailsNavigator />
           </NavigationContainer>
         </View>

@@ -1,4 +1,10 @@
 export enum ScreenName {
+  // Root
+  SPLIT_VIEW = '[Root] Split View',
+
+  // Auth
+  AUTH_PHONE = '[Auth] Phone',
+
   // Boxes
   BOXES_MAIN = '[Boxes] Main',
 
