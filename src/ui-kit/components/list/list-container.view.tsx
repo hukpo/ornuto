@@ -32,6 +32,6 @@ const styles = StyleSheet.create({
   },
 
   child: {
-    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomWidth: 1,
   },
 });

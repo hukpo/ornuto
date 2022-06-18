@@ -1,1 +1,1 @@
-export { AuthPhone } from './screens';
+export * from './screens';

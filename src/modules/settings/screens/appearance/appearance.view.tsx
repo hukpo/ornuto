@@ -1,20 +1,26 @@
-import React, { FC } from 'react';
-import { StyleSheet, View } from 'react-native';
+import React from 'react';
+import { observer } from 'mobx-react-lite';
+import { useTranslation } from 'react-i18next';
 
-import { UIText } from '@/ui-kit';
+import { useVm } from '@/hooks';
+import { AppearanceVm } from './appearance.vm';
+import { UIList, UIScrollView, UISpacingStyles } from '@/ui-kit';
 
-export const SettingsAppearance: FC = () => {
+export const SettingsAppearance = observer(() => {
+  const vm = useVm(AppearanceVm);
+  const { t } = useTranslation(['settings']);
+
   return (
-    <View style={styles.container}>
-      <UIText>Appearance</UIText>
-    </View>
+    <UIScrollView style={UISpacingStyles.ps}>
+      <UIList.Container>
+        <UIList.Item
+          title={t('nightMode')}
+          onPress={vm.toggleNightMode}
+          toggled={vm.nightModeToggled}
+          disabled={!vm.nightModeEnabled}
+        />
+        <UIList.Item title={t('autoNightMode')} hasArrow onPress={vm.openAutoNightMode} />
+      </UIList.Container>
+    </UIScrollView>
   );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
 });

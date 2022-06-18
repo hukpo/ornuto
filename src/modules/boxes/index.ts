@@ -1,1 +1,1 @@
-export { BoxesMain } from './screens';
+export * from './screens';

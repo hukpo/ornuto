@@ -13,7 +13,7 @@ export const LIGHT_THEME: Theme = {
     text: 'rgb(28, 28, 30)',
     textDisabled: 'rgb(209, 209, 214)',
 
-    border: 'rgb(216, 216, 216)',
+    border: 'rgb(230,230,230)',
     notification: 'rgb(255, 59, 48)',
 
     background: 'rgb(242, 242, 242)',

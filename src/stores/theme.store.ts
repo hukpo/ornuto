@@ -37,6 +37,9 @@ export class ThemeStore {
   get isSystemAutoNightMode(): boolean {
     return this._autoNightMode === AutoNightMode.SYSTEM;
   }
+  get isDisabledAutoNightMode(): boolean {
+    return this._autoNightMode === AutoNightMode.DISABLED;
+  }
   async setAutoNightMode(value: AutoNightMode): Promise<void> {
     this._autoNightMode = value;
 

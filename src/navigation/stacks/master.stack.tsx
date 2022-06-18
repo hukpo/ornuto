@@ -14,7 +14,9 @@ export const MasterStack: FC<MasterNavigatorProps> = ({ isMasterOnly }) => {
       <Stack.Screen
         name={StackName.BOTTOM_TABS}
         component={BottomTabsStack}
-        options={{ headerShown: false }}
+        options={{
+          headerShown: false,
+        }}
       />
       {isMasterOnly ? DetailsStackScreens(Stack) : null}
     </Stack.Navigator>

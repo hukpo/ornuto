@@ -1,20 +1,31 @@
-import React, { FC } from 'react';
-import { StyleSheet, View } from 'react-native';
+import React from 'react';
+import { observer } from 'mobx-react-lite';
 
-import { UIText } from '@/ui-kit';
+import { useVm } from '@/hooks';
+import { LANGUAGES } from '@/locales';
+import { LanguageVm } from './language.vm';
+import { UIList, UIScrollView, UISpacingStyles } from '@/ui-kit';
 
-export const SettingsLanguage: FC = () => {
+export const SettingsLanguage = observer(() => {
+  const vm = useVm(LanguageVm);
+
   return (
-    <View style={styles.container}>
-      <UIText>Language</UIText>
-    </View>
-  );
-};
+    <UIScrollView style={UISpacingStyles.ps}>
+      <UIList.Container>
+        {LANGUAGES.map(({ name, nativeName, code }, index) => {
+          const onPress = () => vm.selectLanguage(code);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+          return (
+            <UIList.Item
+              key={index}
+              title={name}
+              subtitle={nativeName}
+              onPress={onPress}
+              selected={vm.languageCode === code}
+            />
+          );
+        })}
+      </UIList.Container>
+    </UIScrollView>
+  );
 });

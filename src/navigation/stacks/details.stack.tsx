@@ -2,8 +2,9 @@ import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import { useUI } from '@/ui-kit';
 import { ScreenName } from '../constants';
-import { SettingsAppearance, SettingsLanguage, TipsMain } from '@/modules';
+import { TipsMain, SettingsLanguage, SettingsAppearance, SettingsAutoNightMode } from '@/modules';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,15 +21,30 @@ export const DetailsStackScreens: FC<ReturnType<typeof createNativeStackNavigato
   Group,
 }) => {
   const { t } = useTranslation();
+  const { colors } = useUI();
 
   return (
-    <Group screenOptions={{ fullScreenGestureEnabled: true }}>
+    <Group
+      screenOptions={{
+        headerShadowVisible: false,
+        fullScreenGestureEnabled: true,
+        headerBackButtonMenuEnabled: false,
+        headerBackTitle: t('navigation:back'),
+        contentStyle: { borderTopColor: colors.border, borderTopWidth: 1 },
+      }}>
       <Screen name={ScreenName.TIPS_MAIN} component={TipsMain} options={{ headerShown: false }} />
 
       <Screen
         name={ScreenName.SETTINGS_APPEARANCE}
         component={SettingsAppearance}
-        options={{ headerTitle: t('settings:appearance') }}
+        options={{
+          headerTitle: t('settings:appearance'),
+        }}
+      />
+      <Screen
+        name={ScreenName.SETTINGS_AUTO_NIGHT_MODE}
+        component={SettingsAutoNightMode}
+        options={{ headerTitle: t('settings:autoNightMode') }}
       />
       <Screen
         name={ScreenName.SETTINGS_LANGUAGE}

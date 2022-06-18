@@ -1,1 +1,1 @@
-export { SettingsMain, SettingsLanguage, SettingsAppearance } from './screens';
+export * from './screens';
