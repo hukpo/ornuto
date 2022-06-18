@@ -18,6 +18,10 @@ module.exports = {
                 element: 'Text',
                 message: 'use <UIText> from @/ui-kit',
               },
+              {
+                element: 'ScrollView',
+                message: 'use <UIScrollView> from @/ui-kit',
+              },
             ],
           },
         ],

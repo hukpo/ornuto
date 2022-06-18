@@ -4,7 +4,7 @@ import React, { FC, Children, cloneElement, ReactElement } from 'react';
 import { useUI } from '../../hooks';
 import { UIListItemProps } from './list-item.view';
 
-type UIListContainerProps = {
+export type UIListContainerProps = {
   style?: StyleProp<ViewStyle>;
 };
 
@@ -17,7 +17,7 @@ export const UIListContainer: FC<UIListContainerProps> = ({ children, style }) =
         return cloneElement<UIListItemProps>(
           child as ReactElement,
           Array.isArray(children) && index !== Children.count(children) - 1
-            ? { infoContainerStyle: [styles.child, { borderBottomColor: colors.greyDark }] }
+            ? { infoContainerStyle: [styles.child, { borderBottomColor: colors.border }] }
             : undefined,
         );
       })}

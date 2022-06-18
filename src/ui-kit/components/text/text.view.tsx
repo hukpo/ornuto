@@ -3,7 +3,7 @@ import { ColorValue, StyleProp, StyleSheet, Text as RNText, TextStyle } from 're
 
 import { useUI } from '../../hooks';
 
-type UITextProps = {
+export type UITextProps = {
   onPress?: () => void;
   highlightColor?: ColorValue;
   style?: StyleProp<TextStyle>;

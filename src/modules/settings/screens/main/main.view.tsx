@@ -1,17 +1,16 @@
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { StyleSheet, ScrollView } from 'react-native';
 
 import { useVm } from '@/hooks';
-import { UIList } from '@/ui-kit';
 import { SettingsMainVm } from './main.vm';
+import { UIList, UIScrollView, UISpacingStyles } from '@/ui-kit';
 
 export const SettingsMain: FC = () => {
   const vm = useVm(SettingsMainVm);
   const { t } = useTranslation(['settings']);
 
   return (
-    <ScrollView style={styles.container}>
+    <UIScrollView style={UISpacingStyles.ps}>
       <UIList.Container>
         <UIList.Item
           title={t('appearance')}
@@ -29,20 +28,9 @@ export const SettingsMain: FC = () => {
         />
       </UIList.Container>
 
-      <UIList.Container style={styles.listContainer}>
+      <UIList.Container style={UISpacingStyles.mtxl}>
         <UIList.Item title={t('logOut')} titleStyle="destructive" onPress={vm.logOut} />
       </UIList.Container>
-    </ScrollView>
+    </UIScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    // TODO Spacing
-    padding: 10,
-  },
-
-  listContainer: {
-    marginTop: 10,
-  },
-});
