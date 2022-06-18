@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { Txt } from '@/ui-kit';
+import { UIText } from '@/ui-kit';
 
 export const BoxesMain: FC = () => {
   return (
     <View style={styles.container}>
-      <Txt>Boxes Main</Txt>
+      <UIText>Boxes Main</UIText>
     </View>
   );
 };

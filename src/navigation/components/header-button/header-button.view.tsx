@@ -2,8 +2,7 @@ import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 
-import { useUI } from '@/themes';
-import { Icon, Txt } from '@/ui-kit';
+import { UIIcon, UIText, useUI } from '@/ui-kit';
 import { useNavigation } from '@react-navigation/native';
 
 type HeaderButtonProps = {
@@ -34,7 +33,7 @@ export const HeaderButton: FC<HeaderButtonProps> = ({
   return (
     <TouchableOpacity style={styles.container} disabled={disabled} onPress={onPress}>
       {backIconVisible ? (
-        <Icon
+        <UIIcon
           name="arrow.left"
           width={12}
           style={styles.backIcon}
@@ -42,9 +41,9 @@ export const HeaderButton: FC<HeaderButtonProps> = ({
         />
       ) : null}
 
-      <Txt style={[styles.title, { color: disabled ? colors.textDisabled : colors.primary }]}>
+      <UIText style={[styles.title, { color: disabled ? colors.textDisabled : colors.primary }]}>
         {title}
-      </Txt>
+      </UIText>
     </TouchableOpacity>
   );
 };

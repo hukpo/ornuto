@@ -1,3 +1,3 @@
-export { Txt } from './txt';
-export { Icon } from './icon';
-export { List } from './list';
+export * from './hooks';
+export * from './themes';
+export * from './components';

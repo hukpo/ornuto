@@ -1,15 +1,22 @@
-import { useUI } from '@/themes';
 import React, { FC, useState } from 'react';
 import { ColorValue, StyleProp, StyleSheet, Text as RNText, TextStyle } from 'react-native';
 
-type TxtProps = {
+import { useUI } from '../../hooks';
+
+type UITextProps = {
   onPress?: () => void;
   highlightColor?: ColorValue;
   style?: StyleProp<TextStyle>;
   numberOfLines?: number;
 };
 
-export const Txt: FC<TxtProps> = ({ style, onPress, children, numberOfLines, highlightColor }) => {
+export const UIText: FC<UITextProps> = ({
+  style,
+  onPress,
+  children,
+  numberOfLines,
+  highlightColor,
+}) => {
   const { colors } = useUI();
   const [highlightActive, setHighlightActive] = useState(false);
 

@@ -8,6 +8,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "tsc:check": "tsc --noEmit --skipLibCheck",
     "eject": "expo eject"
   },
   "dependencies": {

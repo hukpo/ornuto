@@ -16,7 +16,7 @@ module.exports = {
             forbid: [
               {
                 element: 'Text',
-                message: 'use <Txt> from @/ui-kit',
+                message: 'use <UIText> from @/ui-kit',
               },
             ],
           },

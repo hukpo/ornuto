@@ -3,7 +3,7 @@ import { StyleProp, ViewStyle } from 'react-native';
 import Svg, { Circle, G, Path } from 'react-native-svg';
 import { Box, Setting2, Send, Trash, Global, Blur, Paperclip2 } from 'iconsax-react-native';
 
-export type IconProps = {
+export type UIIconProps = {
   name:
     | 'box'
     | 'gear'
@@ -27,7 +27,7 @@ export type IconProps = {
   style?: StyleProp<ViewStyle>;
 };
 
-export const Icon: FC<IconProps> = ({ style, name, color, size, width = 0, height = 0 }) => {
+export const UIIcon: FC<UIIconProps> = ({ style, name, color, size, width = 0, height = 0 }) => {
   switch (name) {
     case 'box':
       return <Box style={style} size={size} color={color} />;

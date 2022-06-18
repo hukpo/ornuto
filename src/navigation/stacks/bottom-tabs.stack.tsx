@@ -5,7 +5,7 @@ import {
   BottomTabNavigationOptions,
 } from '@react-navigation/bottom-tabs';
 
-import { Icon } from '@/ui-kit';
+import { UIIcon } from '@/ui-kit';
 import { StackName } from '../constants';
 import { BoxesStack } from './boxes.stack';
 import { SettingsStack } from './settings.stack';
@@ -13,11 +13,11 @@ import { SettingsStack } from './settings.stack';
 const { Navigator, Screen } = createBottomTabNavigator();
 
 const BoxesIcon: BottomTabNavigationOptions['tabBarIcon'] = ({ color, size }) => (
-  <Icon name="box" size={size} color={color} />
+  <UIIcon name="box" size={size} color={color} />
 );
 
 const SettingsIcon: BottomTabNavigationOptions['tabBarIcon'] = ({ color, size }) => (
-  <Icon name="gear" size={size} color={color} />
+  <UIIcon name="gear" size={size} color={color} />
 );
 
 export const BottomTabsStack: FC = () => {

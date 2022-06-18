@@ -11,13 +11,13 @@ import {
   TextInputProps,
 } from 'react-native';
 
-import { Txt } from '../txt';
-import { useUI } from '@/themes';
-import { Icon, IconProps } from '../icon';
+import { UIText } from '../text';
+import { useUI } from '../../hooks';
+import { UIIcon, UIIconProps } from '../icon';
 
 const ICON_CONTAINER_PADDING = 4;
 
-export type ListItemProps = {
+export type UIListItemProps = {
   title?: string;
   subtitle?: string;
   onPress?: () => void;
@@ -31,16 +31,16 @@ export type ListItemProps = {
 
   renderIcon?: () => ReactNode;
   iconHeight?: number;
-  iconName?: IconProps['name'];
   iconColor?: ColorValue;
   iconBackground?: ColorValue;
+  iconName?: UIIconProps['name'];
 
   titleStyle?: 'destructive' | 'primary';
   iconContainerStyle?: StyleProp<ViewStyle>;
   infoContainerStyle?: StyleProp<ViewStyle>;
 };
 
-export const ListItem: FC<ListItemProps> = ({
+export const UIListItem: FC<UIListItemProps> = ({
   infoContainerStyle,
   title,
   subtitle,
@@ -88,7 +88,7 @@ export const ListItem: FC<ListItemProps> = ({
           {renderIcon ? (
             renderIcon()
           ) : iconName ? (
-            <Icon name={iconName} size={iconHeight} color={iconColor as string} />
+            <UIIcon name={iconName} size={iconHeight} color={iconColor as string} />
           ) : null}
         </View>
       ) : null}
@@ -103,7 +103,7 @@ export const ListItem: FC<ListItemProps> = ({
           ) : null}
 
           {title ? (
-            <Txt
+            <UIText
               style={[
                 styles.title,
                 {
@@ -117,13 +117,14 @@ export const ListItem: FC<ListItemProps> = ({
                 },
               ]}>
               {title}
-            </Txt>
+            </UIText>
           ) : null}
 
           {subtitle ? (
-            <Txt style={[styles.subtitle, { color: disabled ? colors.textDisabled : colors.text }]}>
+            <UIText
+              style={[styles.subtitle, { color: disabled ? colors.textDisabled : colors.text }]}>
               {subtitle}
-            </Txt>
+            </UIText>
           ) : null}
         </View>
 
@@ -135,9 +136,9 @@ export const ListItem: FC<ListItemProps> = ({
             onValueChange={onPress}
           />
         ) : null}
-        {selected ? <Icon name="checkmark" size={12} color={colors.primary} /> : null}
+        {selected ? <UIIcon name="checkmark" size={12} color={colors.primary} /> : null}
 
-        {hasArrow ? <Icon name="arrow.right" width={7} color={colors.greyLight} /> : null}
+        {hasArrow ? <UIIcon name="arrow.right" width={7} color={colors.greyLight} /> : null}
       </View>
     </Pressable>
   );

@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { Txt } from '@/ui-kit';
+import { UIText } from '@/ui-kit';
 
 export const AuthPhone: FC = () => {
   return (
     <View style={styles.container}>
-      <Txt>Auth Phone</Txt>
+      <UIText>Auth Phone</UIText>
     </View>
   );
 };

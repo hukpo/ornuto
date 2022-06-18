@@ -34,8 +34,8 @@ export class ThemeStore {
     await this._storage.set('nightModeToggled', value ? 'true' : 'false');
   }
 
-  get autoNightMode(): AutoNightMode {
-    return this._autoNightMode;
+  get isSystemAutoNightMode(): boolean {
+    return this._autoNightMode === AutoNightMode.SYSTEM;
   }
   async setAutoNightMode(value: AutoNightMode): Promise<void> {
     this._autoNightMode = value;

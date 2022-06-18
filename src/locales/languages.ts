@@ -1,4 +1,4 @@
-import { LanguageCode } from './index';
+import { LanguageCode } from '@/types';
 
 type Language = {
   code: LanguageCode;

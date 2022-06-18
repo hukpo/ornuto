@@ -1,10 +1,12 @@
 import React from 'react';
+import { container } from 'tsyringe';
 import { observer } from 'mobx-react-lite';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { AuthPhone } from '@/modules';
-import { useInitTheme } from '@/themes';
+import { ThemeStore } from '@/stores';
+import { useInitTheme } from '@/ui-kit';
 import { ScreenName } from '../constants';
 import { SplitView } from '../components';
 import { MasterStack } from './master.stack';
@@ -14,7 +16,11 @@ import { detailsRef, masterRef } from '../utils';
 const { Navigator, Screen } = createNativeStackNavigator();
 
 export const MainStack = observer(() => {
-  const theme = useInitTheme();
+  const themeStore = container.resolve(ThemeStore);
+  const theme = useInitTheme({
+    isSystem: themeStore.isSystemAutoNightMode,
+    isNightModeEnabled: themeStore.nightModeToggled,
+  });
 
   return (
     <NavigationContainer ref={masterRef} theme={theme}>

@@ -1,6 +1,7 @@
 import { container } from 'tsyringe';
 import { LanguageDetectorAsyncModule } from 'i18next';
 
+import { LanguageCode } from '@/types';
 import { SimpleStorage } from '@/services';
 
 export const detectLanguage = (fallbackLanguageCode: string): LanguageDetectorAsyncModule => {
@@ -15,8 +16,8 @@ export const detectLanguage = (fallbackLanguageCode: string): LanguageDetectorAs
 
       callback(languageCode || fallbackLanguageCode);
     },
-    cacheUserLanguage: async (language: string) => {
-      await simpleStorage.set('languageCode', language);
+    cacheUserLanguage: async (languageCode: LanguageCode) => {
+      await simpleStorage.set('languageCode', languageCode);
     },
   };
 };
