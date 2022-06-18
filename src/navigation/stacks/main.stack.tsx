@@ -34,13 +34,7 @@ export const MainStack = observer(() => {
           )}
         </Screen>
 
-        <Screen
-          name={ScreenName.AUTH_PHONE}
-          component={AuthPhone}
-          options={{
-            fullScreenGestureEnabled: true,
-          }}
-        />
+        <Screen name={ScreenName.AUTH_PHONE} component={AuthPhone} />
       </Navigator>
     </NavigationContainer>
   );
