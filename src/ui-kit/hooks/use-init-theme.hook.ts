@@ -12,7 +12,7 @@ type InitThemeOptions = {
 export const useInitTheme = (options: InitThemeOptions): Theme => {
   const scheme = useColorScheme();
 
-  let theme = DARK_THEME;
+  let theme;
 
   if (options.isSystem) {
     theme = scheme === 'dark' ? DARK_THEME : LIGHT_THEME;
