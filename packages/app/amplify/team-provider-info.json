@@ -10,11 +10,6 @@
       "StackName": "amplify-ornuto-dev-121728",
       "StackId": "arn:aws:cloudformation:eu-central-1:824459729393:stack/amplify-ornuto-dev-121728/a4e84210-efb0-11ec-947c-0686e4eb82a4",
       "AmplifyAppId": "d3p11l9htcxtqg"
-    },
-    "categories": {
-      "auth": {
-        "ornuto8117b6958117b695": {}
-      }
     }
   }
 }
