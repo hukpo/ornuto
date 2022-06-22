@@ -1,0 +1,9 @@
+{
+  "platforms": ["ios", "android", "web"],
+  "ios": {
+    "modulesClassNames": ["QuickImageModule"]
+  },
+  "android": {
+    "modulesClassNames": ["expo.modules.quickimage.QuickImageModule"]
+  }
+}

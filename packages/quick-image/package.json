@@ -1,0 +1,32 @@
+{
+  "name": "quick-image",
+  "version": "0.1.0",
+  "description": "",
+  "main": "build/QuickImage.js",
+  "types": "build/QuickImage.d.ts",
+  "scripts": {
+    "build": "expo-module build",
+    "clean": "expo-module clean",
+    "lint": "expo-module lint",
+    "test": "expo-module test",
+    "prepare": "expo-module prepare",
+    "prepublishOnly": "expo-module prepublishOnly",
+    "expo-module": "expo-module"
+  },
+  "keywords": ["react-native", "expo", "quick-image", "QuickImage"],
+  "repository": "",
+  "bugs": {
+    "url": "/issues"
+  },
+  "author": "",
+  "license": "MIT",
+  "homepage": "#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "expo-module-scripts": "^2.0.0",
+    "expo-modules-core": "^0.9.0"
+  },
+  "peerDependencies": {
+    "expo": "*"
+  }
+}
