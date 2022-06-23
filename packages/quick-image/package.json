@@ -1,7 +1,7 @@
 {
   "name": "quick-image",
   "version": "0.1.0",
-  "description": "",
+  "description": "QuickImage module for React Native",
   "main": "build/QuickImage.js",
   "types": "build/QuickImage.d.ts",
   "scripts": {
@@ -13,7 +13,12 @@
     "prepublishOnly": "expo-module prepublishOnly",
     "expo-module": "expo-module"
   },
-  "keywords": ["react-native", "expo", "quick-image", "QuickImage"],
+  "keywords": [
+    "react-native",
+    "expo",
+    "quick-image",
+    "QuickImage"
+  ],
   "repository": "",
   "bugs": {
     "url": "/issues"
