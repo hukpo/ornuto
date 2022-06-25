@@ -1,3 +1,3 @@
-import QuickImageView, { QuickImageViewProps } from "./QuickImageView";
+import QuickImageView, { QuickImageViewProps } from './QuickImageView';
 
 export { QuickImageView, QuickImageViewProps };
