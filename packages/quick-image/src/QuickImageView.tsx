@@ -1,17 +1,17 @@
-import { requireNativeViewManager } from 'expo-modules-core';
-import * as React from 'react';
+import { requireNativeViewManager } from "expo-modules-core";
+import * as React from "react";
+import { ViewProps } from "react-native";
 
-export type QuickImageViewProps = {
-  name: number;
+export type QuickImageViewProps = ViewProps & {
+  uri: string;
 };
 
-type QuickImageViewState = {}
+type QuickImageViewState = object;
 
-const NativeView: React.ComponentType<QuickImageViewProps> =
-  requireNativeViewManager('QuickImage');
+const NativeView: React.ComponentType<QuickImageViewProps> = requireNativeViewManager("QuickImage");
 
 export default class QuickImageView extends React.Component<QuickImageViewProps, QuickImageViewState> {
   render() {
-    return <NativeView name={this.props.name} />;
+    return <NativeView {...this.props} uri={this.props.uri} />;
   }
 }

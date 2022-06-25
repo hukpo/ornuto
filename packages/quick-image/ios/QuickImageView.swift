@@ -1,5 +1,6 @@
 import UIKit
+import SDWebImage
 
-class QuickImageView: UIView {
+class QuickImageView: UIImageView {
   
 }

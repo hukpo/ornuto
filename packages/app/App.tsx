@@ -2,27 +2,33 @@ import 'reflect-metadata';
 
 import { container } from 'tsyringe';
 import { Amplify } from 'aws-amplify';
-import React, { Suspense, useEffect } from 'react';
+import React, { Suspense } from 'react';
 
-import { helloAsync } from 'quick-image';
+import { QuickImageView } from 'quick-image';
 
+import { AppStore } from './src';
 import awsExports from './src/aws-exports';
-import { MainStack, AppStore } from './src';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
 
 Amplify.configure(awsExports);
 
 container.resolve(AppStore).main();
 
 export default function App() {
-  useEffect(() => {
-    const kek = helloAsync({});
-    console.log('--->', kek instanceof Promise);
-  }, []);
-
   return (
     <Suspense fallback={<ActivityIndicator />}>
-      <MainStack />
+      <View
+        style={{
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: 'pink',
+        }}>
+        <QuickImageView
+          uri="https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg"
+          style={{ width: 200, aspectRatio: 1 }}
+        />
+      </View>
     </Suspense>
   );
 }

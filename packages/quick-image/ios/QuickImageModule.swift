@@ -1,4 +1,5 @@
 import ExpoModulesCore
+import SDWebImage
 
 public class QuickImageModule: Module {
   public func definition() -> ModuleDefinition {
@@ -9,8 +10,11 @@ public class QuickImageModule: Module {
         QuickImageView()
       }
 
-      Prop("name") { (view: QuickImageView, prop: String) in
-        print(prop)
+      Prop("uri") { (view: QuickImageView, prop: URL) in
+        view.sd_imageIndicator = SDWebImageActivityIndicator.gray;
+        view.sd_imageTransition = SDWebImageTransition.fade;
+        view.sd_setImage(with: prop)
+        view.contentMode = UIView.ContentMode.scaleAspectFill
       }
     }
   }
