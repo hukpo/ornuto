@@ -1,4 +1,3 @@
-import { runInAction } from 'mobx';
 import { autoInjectable, singleton } from 'tsyringe';
 
 import { AutoNightMode } from '@/types';
@@ -8,13 +7,14 @@ import { makeSimpleAutoObservable } from './utils';
 @singleton()
 @autoInjectable()
 export class ThemeStore {
-  private _nightModeToggled = false;
-  private _autoNightMode = AutoNightMode.SYSTEM;
+  private _nightModeToggled: boolean;
+  private _autoNightMode: AutoNightMode;
 
   constructor(private _storage: SimpleStorage) {
     makeSimpleAutoObservable(this, undefined, { autoBind: true });
 
-    this.getStorageSettings();
+    this._nightModeToggled = this._storage.get('nightModeToggled') === 'true';
+    this._autoNightMode = this._storage.get('autoNightMode') || AutoNightMode.SYSTEM;
   }
 
   get nightModeEnabled(): boolean {
@@ -28,10 +28,10 @@ export class ThemeStore {
 
     return false;
   }
-  async setNightModeToggled(value: boolean): Promise<void> {
+  setNightModeToggled(value: boolean) {
     this._nightModeToggled = value;
 
-    await this._storage.set('nightModeToggled', value ? 'true' : 'false');
+    this._storage.set('nightModeToggled', value ? 'true' : 'false');
   }
 
   get isSystemAutoNightMode(): boolean {
@@ -40,10 +40,10 @@ export class ThemeStore {
   get isDisabledAutoNightMode(): boolean {
     return this._autoNightMode === AutoNightMode.DISABLED;
   }
-  async setAutoNightMode(value: AutoNightMode): Promise<void> {
+  setAutoNightMode(value: AutoNightMode) {
     this._autoNightMode = value;
 
-    await this._storage.set('autoNightMode', value);
+    this._storage.set('autoNightMode', value);
   }
 
   selectSystemMode(): void {
@@ -52,22 +52,5 @@ export class ThemeStore {
 
   selectDisabledMode(): void {
     this.setAutoNightMode(AutoNightMode.DISABLED);
-  }
-
-  private async getStorageSettings(): Promise<void> {
-    const { autoNightMode, nightModeToggled } = await this._storage.getObject([
-      'autoNightMode',
-      'nightModeToggled',
-    ]);
-
-    runInAction(() => {
-      if (autoNightMode) {
-        this._autoNightMode = autoNightMode;
-      }
-
-      if (nightModeToggled) {
-        this._nightModeToggled = nightModeToggled === 'true';
-      }
-    });
   }
 }
