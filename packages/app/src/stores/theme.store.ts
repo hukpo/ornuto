@@ -11,10 +11,10 @@ export class ThemeStore {
   private _autoNightMode: AutoNightMode;
 
   constructor(private _storage: SimpleStorage) {
-    makeSimpleAutoObservable(this, undefined, { autoBind: true });
-
     this._nightModeToggled = this._storage.get('nightModeToggled') === 'true';
     this._autoNightMode = this._storage.get('autoNightMode') || AutoNightMode.SYSTEM;
+
+    makeSimpleAutoObservable(this, undefined, { autoBind: true });
   }
 
   get nightModeEnabled(): boolean {

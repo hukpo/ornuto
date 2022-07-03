@@ -2,16 +2,15 @@ import React from 'react';
 import { container } from 'tsyringe';
 import { observer } from 'mobx-react-lite';
 import { NavigationContainer } from '@react-navigation/native';
+import { detailsRef, masterRef, SplitView } from '@ornuto/navigation';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { AuthPhone } from '@/modules';
 import { ThemeStore } from '@/stores';
 import { useInitTheme } from '@/ui-kit';
 import { ScreenName } from '../constants';
-import { SplitView } from '../components';
 import { MasterStack } from './master.stack';
 import { DetailsStack } from './details.stack';
-import { detailsRef, masterRef } from '../utils';
 
 const { Navigator, Screen } = createNativeStackNavigator();
 

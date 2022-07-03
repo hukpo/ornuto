@@ -1,5 +1,5 @@
 {
-  "name": "quick-image",
+  "name": "@ornuto/quick-image",
   "version": "0.1.0",
   "description": "QuickImage module for React Native",
   "main": "build/QuickImage.js",

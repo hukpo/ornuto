@@ -29,6 +29,6 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": ["quick-image"]
+    "plugins": ["@ornuto/quick-image"]
   }
 }

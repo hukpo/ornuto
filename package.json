@@ -8,7 +8,7 @@
     "packages/*"
   ],
   "scripts": {
-    "mobile": "yarn workspace @ornuto/app",
+    "a": "yarn workspace @ornuto/app",
     "tsc:check": "tsc --noEmit --skipLibCheck"
   },
   "devDependencies": {
