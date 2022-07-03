@@ -1,10 +1,11 @@
+import { StackName } from './../navigation/constants/stack-name.constant';
 import { runInAction } from 'mobx';
 import { autoInjectable, singleton } from 'tsyringe';
 
 import { Logger } from '@/utils';
 import { AuthStore } from './auth.store';
+import { Navigation } from '@/navigation';
 import { makeSimpleAutoObservable } from './utils';
-import { Navigation, ScreenName } from '@/navigation';
 
 @singleton()
 @autoInjectable()
@@ -27,7 +28,7 @@ export class AppStore {
       const user = await this._authStore.getUser();
 
       if (!user) {
-        return this._navigation.navigate(ScreenName.AUTH_PHONE);
+        return this._navigation.navigate(StackName.AUTH);
       }
     } catch (err) {
       //TODO ???

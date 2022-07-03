@@ -4,6 +4,7 @@ export enum ScreenName {
 
   // Auth
   AUTH_PHONE = '[Auth] Phone',
+  AUTH_CODE = '[Auth] Code',
 
   // Boxes
   BOXES_MAIN = '[Boxes] Main',
