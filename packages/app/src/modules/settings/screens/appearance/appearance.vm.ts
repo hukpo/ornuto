@@ -9,19 +9,19 @@ export class AppearanceVm {
     makeSimpleAutoObservable(this, undefined, { autoBind: true });
   }
 
-  get nightModeEnabled(): boolean {
+  get nightModeEnabled() {
     return this._themeStore!.nightModeEnabled;
   }
 
-  get nightModeToggled(): boolean {
+  get nightModeToggled() {
     return this._themeStore!.nightModeToggled;
   }
 
-  toggleNightMode(): void {
+  toggleNightMode() {
     this._themeStore!.setNightModeToggled(!this.nightModeToggled);
   }
 
-  openAutoNightMode(): void {
+  openAutoNightMode() {
     this._navigation!.navigate(ScreenName.SETTINGS_AUTO_NIGHT_MODE);
   }
 }

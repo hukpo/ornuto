@@ -15,11 +15,11 @@ export class AuthPhoneVm {
     makeSimpleAutoObservable(this, undefined, { autoBind: true });
   }
 
-  get nextButtonDisabled(): boolean {
+  get nextButtonDisabled() {
     return this.phoneNumber.value.length < 9;
   }
 
-  async sendCode(): Promise<void> {
+  async sendCode() {
     try {
       this._navigation!.navigate(ScreenName.AUTH_CODE);
     } catch (err) {

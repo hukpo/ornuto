@@ -6,7 +6,7 @@ import { Navigation, ScreenName } from '@/navigation';
 
 @autoInjectable()
 export class SettingsMainVm {
-  private _logger = new Logger('SettingsMainVm');
+  private _logger = new Logger('🔮|SettingsMainVm');
 
   constructor(private _navigation?: Navigation) {
     makeSimpleAutoObservable(this, undefined, { autoBind: true });
