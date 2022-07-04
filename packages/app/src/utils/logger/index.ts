@@ -3,6 +3,19 @@ if (!__DEV__) {
   console.error = () => null;
 }
 
+const getCurrentTime = () => {
+  const date = new Date();
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  const millis = date.getMilliseconds();
+
+  const fullHours = (hours < 10 ? '0' : '') + hours;
+  const fullMinutes = (minutes < 10 ? '0' : '') + minutes;
+  const fullMillis = (millis < 100 ? '0' : '') + (millis < 10 ? '0' : '') + millis;
+
+  return `${fullHours}:${fullMinutes}.${fullMillis}`;
+};
+
 export class Logger {
   private _logger = console;
   private _namespace: string;
@@ -12,13 +25,20 @@ export class Logger {
   }
 
   info(message: string) {
-    this._logger.log(this._namespace, message);
+    let fullMessage = `${this._namespace} ${message}`;
+
+    if (__DEV__) {
+      fullMessage = `${getCurrentTime()} - ${fullMessage}`;
+    }
+
+    this._logger.log(fullMessage);
 
     // TODO crashlytics
   }
 
   async event(name: string, params: object) {
     try {
+      // TODO namespace
       this.info(`event: ${name}, params: ${JSON.stringify(params)}`);
 
       // TODO analytics

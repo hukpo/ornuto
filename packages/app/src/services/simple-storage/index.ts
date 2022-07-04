@@ -10,13 +10,13 @@ export class SimpleStorage {
   private _logger = new Logger('💾|Storage');
 
   get<T extends keyof StorageKeys>(key: T): StorageKeys[T] | null {
-    this._logger.info(`get: ${key}`);
+    this._logger.info(`get ${key}`);
 
     return this._storage.getString(key) as StorageKeys[T] | null;
   }
 
   set<T extends keyof StorageKeys>(key: T, value: StorageKeys[T]): void {
-    this._logger.info(`set: ${key}`);
+    this._logger.info(`set ${key}`);
 
     this._storage.set(key, value);
   }
