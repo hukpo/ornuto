@@ -5,12 +5,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { detailsRef, masterRef, SplitView } from '@ornuto/navigation';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { AuthPhone } from '@/modules';
 import { ThemeStore } from '@/stores';
 import { useInitTheme } from '@/ui-kit';
-import { ScreenName } from '../constants';
+import { AuthStack } from './auth.stack';
 import { MasterStack } from './master.stack';
 import { DetailsStack } from './details.stack';
+import { ScreenName, StackName } from '../constants';
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
@@ -39,7 +39,14 @@ export const MainStack = observer(() => {
           )}
         </Screen>
 
-        <Screen name={ScreenName.AUTH_PHONE} component={AuthPhone} />
+        <Screen
+          name={StackName.AUTH}
+          component={AuthStack}
+          options={{
+            headerShown: false,
+            presentation: 'fullScreenModal',
+          }}
+        />
       </Navigator>
     </NavigationContainer>
   );

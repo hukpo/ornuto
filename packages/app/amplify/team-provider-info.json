@@ -1,15 +1,20 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-ornuto-dev-121728-authRole",
-      "UnauthRoleArn": "arn:aws:iam::824459729393:role/amplify-ornuto-dev-121728-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::824459729393:role/amplify-ornuto-dev-121728-authRole",
+      "AuthRoleName": "amplify-ornuto-dev-232758-authRole",
+      "UnauthRoleArn": "arn:aws:iam::824459729393:role/amplify-ornuto-dev-232758-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::824459729393:role/amplify-ornuto-dev-232758-authRole",
       "Region": "eu-central-1",
-      "DeploymentBucketName": "amplify-ornuto-dev-121728-deployment",
-      "UnauthRoleName": "amplify-ornuto-dev-121728-unauthRole",
-      "StackName": "amplify-ornuto-dev-121728",
-      "StackId": "arn:aws:cloudformation:eu-central-1:824459729393:stack/amplify-ornuto-dev-121728/a4e84210-efb0-11ec-947c-0686e4eb82a4",
-      "AmplifyAppId": "d3p11l9htcxtqg"
+      "DeploymentBucketName": "amplify-ornuto-dev-232758-deployment",
+      "UnauthRoleName": "amplify-ornuto-dev-232758-unauthRole",
+      "StackName": "amplify-ornuto-dev-232758",
+      "StackId": "arn:aws:cloudformation:eu-central-1:824459729393:stack/amplify-ornuto-dev-232758/cbed4df0-fbd7-11ec-9aaf-02736c5a1188",
+      "AmplifyAppId": "dlpyhgl8me5ui"
+    },
+    "categories": {
+      "auth": {
+        "ornuto1aeb74311aeb7431": {}
+      }
     }
   }
 }

@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
+import { MasterNavigatorProps } from '@ornuto/navigation';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { StackName } from '../constants';
-import { MasterNavigatorProps } from '../components';
 import { BottomTabsStack } from './bottom-tabs.stack';
 import { DetailsStackScreens } from './details.stack';
 

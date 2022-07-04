@@ -1,6 +1,5 @@
 {
   "projectPath": "/Users/pavlohuk/Desktop/personal.nosync/ornuto/packages/app",
-  "envName": "dev",
-  "defaultEditor": "vscode",
-  "noUpdateBackend": true
+  "defaultEditor": "Visual Studio Code",
+  "envName": "dev"
 }

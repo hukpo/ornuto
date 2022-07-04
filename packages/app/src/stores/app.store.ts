@@ -2,38 +2,40 @@ import { runInAction } from 'mobx';
 import { autoInjectable, singleton } from 'tsyringe';
 
 import { Logger } from '@/utils';
+import { RealmDb } from '@/database';
 import { AuthStore } from './auth.store';
 import { makeSimpleAutoObservable } from './utils';
-import { Navigation, ScreenName } from '@/navigation';
+import { Navigation, StackName } from '@/navigation';
 
 @singleton()
 @autoInjectable()
 export class AppStore {
-  private _isLoaded = false;
-  private _logger = new Logger('AppStore');
+  isLoaded = false;
+  private _logger = new Logger('📺|AppStore');
 
-  constructor(private _authStore: AuthStore, private _navigation: Navigation) {
+  constructor(
+    private _realmDb: RealmDb,
+    private _authStore: AuthStore,
+    private _navigation: Navigation,
+  ) {
     makeSimpleAutoObservable(this, undefined, { autoBind: true });
   }
 
-  get isLoaded(): boolean {
-    return this._isLoaded;
-  }
-
-  async main(): Promise<void> {
+  async main() {
     try {
       this._logger.info('main');
 
       const user = await this._authStore.getUser();
 
       if (!user) {
-        return this._navigation.navigate(ScreenName.AUTH_PHONE);
+        return this._navigation.navigate(StackName.AUTH);
       }
+
+      await this._realmDb.init(user.getIdToken().getJwtToken());
     } catch (err) {
-      //TODO ???
       this._logger.error(err);
     } finally {
-      runInAction(() => (this._isLoaded = true));
+      runInAction(() => (this.isLoaded = true));
     }
   }
 }

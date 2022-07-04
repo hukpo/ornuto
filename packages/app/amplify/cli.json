@@ -14,7 +14,8 @@
       "showfieldauthnotification": false,
       "usesubusernamefordefaultidentityclaim": true,
       "usefieldnameforprimarykeyconnectionfield": false,
-      "enableautoindexquerynames": false
+      "enableautoindexquerynames": false,
+      "respectprimarykeyattributesonconnectionfield": false
     },
     "frontend-ios": {
       "enablexcodeintegration": true
