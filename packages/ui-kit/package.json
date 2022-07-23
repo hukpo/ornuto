@@ -9,6 +9,8 @@
   "peerDependencies": {
     "expo-system-ui": "*",
     "react-native-svg": "*",
-    "@react-navigation/native": "*"
+    "react-native-reanimated": "*",
+    "@react-navigation/native": "*",
+    "react-native-gesture-handler": "*"
   }
 }

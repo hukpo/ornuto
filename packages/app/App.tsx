@@ -1,8 +1,8 @@
 import 'reflect-metadata';
 
+import React, { FC } from 'react';
 import { container } from 'tsyringe';
 import { Amplify } from 'aws-amplify';
-import React, { FC, Suspense } from 'react';
 
 import awsExports from './src/aws-exports';
 import { AppStore, MainStack } from './src';
@@ -17,11 +17,7 @@ Amplify.configure({
 container.resolve(AppStore).main();
 
 const App: FC = () => {
-  return (
-    <Suspense fallback={null}>
-      <MainStack />
-    </Suspense>
-  );
+  return <MainStack />;
 };
 
 const signUpConfig = {
