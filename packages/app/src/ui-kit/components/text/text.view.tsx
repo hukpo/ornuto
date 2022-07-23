@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, ReactNode, useState } from 'react';
 import { ColorValue, StyleProp, StyleSheet, Text as RNText, TextStyle } from 'react-native';
 
 import { useUI } from '../../hooks';
@@ -8,6 +8,7 @@ export type UITextProps = {
   highlightColor?: ColorValue;
   style?: StyleProp<TextStyle>;
   numberOfLines?: number;
+  children: ReactNode;
 };
 
 export const UIText: FC<UITextProps> = ({

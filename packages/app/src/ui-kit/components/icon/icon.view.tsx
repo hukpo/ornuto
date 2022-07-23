@@ -74,6 +74,7 @@ export const UIIcon: FC<UIIconProps> = ({ style, name, color, size, width = 0, h
           width={width || (height / 20) * 11}
           height={height || (width / 11) * 20}
           viewBox="0 0 11 20">
+          {/* @ts-ignore */}
           <G fill="none" fillRule="evenodd">
             <Path opacity={0.87} d="M-6-2h24v24H-6z" />
             <Path

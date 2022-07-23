@@ -1,11 +1,12 @@
 import { View, StyleSheet, StyleProp, ViewStyle } from 'react-native';
-import React, { FC, Children, cloneElement, ReactElement } from 'react';
+import React, { FC, Children, cloneElement, ReactElement, ReactNode } from 'react';
 
 import { useUI } from '../../hooks';
 import { UIListItemProps } from './list-item.view';
 
 export type UIListContainerProps = {
   style?: StyleProp<ViewStyle>;
+  children: ReactNode;
 };
 
 export const UIListContainer: FC<UIListContainerProps> = ({ children, style }) => {
