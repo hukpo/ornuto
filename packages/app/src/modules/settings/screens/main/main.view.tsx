@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
+import { UIList, UIScrollView, UISpacingStyles } from '@ornuto/ui-kit';
 
 import { useVm } from '@/hooks';
 import { SettingsMainVm } from './main.vm';
-import { UIList, UIScrollView, UISpacingStyles } from '@ornuto/ui-kit';
 
 export const SettingsMain: FC = () => {
   const vm = useVm(SettingsMainVm);

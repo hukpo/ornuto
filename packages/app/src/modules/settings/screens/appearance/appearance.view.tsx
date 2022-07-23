@@ -1,10 +1,10 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite';
 import { useTranslation } from 'react-i18next';
+import { UIList, UIScrollView, UISpacingStyles } from '@ornuto/ui-kit';
 
 import { useVm } from '@/hooks';
 import { AppearanceVm } from './appearance.vm';
-import { UIList, UIScrollView, UISpacingStyles } from '@ornuto/ui-kit';
 
 export const SettingsAppearance = observer(() => {
   const vm = useVm(AppearanceVm);

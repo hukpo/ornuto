@@ -1,30 +1,26 @@
 import React, { FC } from 'react';
-import { StyleSheet, Pressable } from 'react-native';
-import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
+import { UIIcon, useUI } from '@ornuto/ui-kit';
+import { StyleSheet, Pressable, StyleProp, ViewStyle } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
-import { UIIcon, UIIconProps, useUI } from '@ornuto/ui-kit';
+const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
-type FABProps = {
-  iconName: UIIconProps['name'];
+type BoxAddFABProps = {
   onPress?: () => void;
+  style?: StyleProp<ViewStyle>;
 };
 
 const FAB_SIZE = 50;
-const FAB_MARGIN = 15;
 const MIN_SCALE = 0.8;
 const DEFAULT_SCALE = 1;
 const ROTATION_DEG = 90;
 const DEFAULT_ROTATION_DEG = 0;
 const ANIMATION_DURATION = 150;
 
-const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
-
-export const FAB: FC<FABProps> = ({ onPress }) => {
+export const BoxAddFAB: FC<BoxAddFABProps> = ({ onPress, style }) => {
   const { colors } = useUI();
   const scale = useSharedValue(DEFAULT_SCALE);
   const rotation = useSharedValue(DEFAULT_ROTATION_DEG);
-  const bottomMenuHeight = useBottomTabBarHeight();
 
   const onPressIn = (): void => {
     scale.value = withTiming(MIN_SCALE, { duration: ANIMATION_DURATION });
@@ -50,9 +46,9 @@ export const FAB: FC<FABProps> = ({ onPress }) => {
         {
           borderColor: colors.primary,
           backgroundColor: colors.primary,
-          bottom: bottomMenuHeight + FAB_MARGIN,
         },
         animatedStyle,
+        style,
       ]}>
       <UIIcon name="plus" size={FAB_SIZE * 0.4} color="#fff" />
     </AnimatedPressable>
@@ -66,10 +62,6 @@ const styles = StyleSheet.create({
     borderRadius: FAB_SIZE / 2,
     alignItems: 'center',
     justifyContent: 'center',
-    right: FAB_MARGIN,
-    position: 'absolute',
-    zIndex: 1000,
-
     shadowColor: '#000',
 
     shadowOffset: {

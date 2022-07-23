@@ -2,9 +2,9 @@ import React from 'react';
 import { container } from 'tsyringe';
 import { observer } from 'mobx-react-lite';
 import { useTranslation } from 'react-i18next';
+import { UIList, UIScrollView, UISpacingStyles } from '@ornuto/ui-kit';
 
 import { ThemeStore } from '@/stores';
-import { UIList, UIScrollView, UISpacingStyles } from '@ornuto/ui-kit';
 
 export const SettingsAutoNightMode = observer(() => {
   const { t } = useTranslation(['settings']);

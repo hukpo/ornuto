@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
+import { UIIcon } from '@ornuto/ui-kit';
 import { useTranslation } from 'react-i18next';
 import {
   createBottomTabNavigator,
   BottomTabNavigationOptions,
 } from '@react-navigation/bottom-tabs';
 
-import { UIIcon } from '@ornuto/ui-kit';
 import { StackName } from '../constants';
 import { BoxesStack } from './boxes.stack';
 import { SettingsStack } from './settings.stack';

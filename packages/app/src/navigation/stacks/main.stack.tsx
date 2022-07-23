@@ -1,6 +1,7 @@
 import React from 'react';
 import { container } from 'tsyringe';
 import { observer } from 'mobx-react-lite';
+import { useInitTheme } from '@ornuto/ui-kit';
 import { NavigationContainer } from '@react-navigation/native';
 import { detailsRef, masterRef, SplitView } from '@ornuto/navigation';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -8,7 +9,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ThemeStore } from '@/stores';
 import { AuthStack } from './auth.stack';
 import { MasterStack } from './master.stack';
-import { useInitTheme } from '@ornuto/ui-kit';
 import { DetailsStack } from './details.stack';
 import { ScreenName, StackName } from '../constants';
 

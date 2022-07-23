@@ -1,10 +1,10 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite';
+import { UIList, UIScrollView, UISpacingStyles } from '@ornuto/ui-kit';
 
 import { useVm } from '@/hooks';
 import { LANGUAGES } from '@/locales';
 import { LanguageVm } from './language.vm';
-import { UIList, UIScrollView, UISpacingStyles } from '@ornuto/ui-kit';
 
 export const SettingsLanguage = observer(() => {
   const vm = useVm(LanguageVm);

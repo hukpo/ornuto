@@ -1,12 +1,12 @@
-import React, { useEffect, useLayoutEffect } from 'react';
+import { UIText, useUI } from '@ornuto/ui-kit';
 import { observer } from 'mobx-react-lite';
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
+import React, { useEffect, useLayoutEffect } from 'react';
 import { BackHandler, StyleSheet, TextInput, View } from 'react-native';
 
 import { useVm } from '@/hooks';
 import { AuthPhoneVm } from './phone.vm';
-import { UIText, useUI } from '@ornuto/ui-kit';
 import { HeaderButton } from '@/navigation';
 
 export const AuthPhone = observer(() => {

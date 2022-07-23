@@ -1,3 +1,4 @@
+import { useUI } from '@ornuto/ui-kit';
 import { observer } from 'mobx-react-lite';
 import { useTranslation } from 'react-i18next';
 import React, { useLayoutEffect } from 'react';
@@ -5,7 +6,6 @@ import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, TextInput, View } from 'react-native';
 
 import { useVm } from '@/hooks';
-import { useUI } from '@ornuto/ui-kit';
 import { AuthCodeVm } from './code.vm';
 import { HeaderButton } from '@/navigation';
 
