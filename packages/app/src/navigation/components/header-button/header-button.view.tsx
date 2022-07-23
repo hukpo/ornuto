@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 
-import { UIIcon, UIText, useUI } from '@/ui-kit';
+import { UIIcon, UIText, useUI } from '@ornuto/ui-kit';
 import { useNavigation } from '@react-navigation/native';
 
 type HeaderButtonProps = {

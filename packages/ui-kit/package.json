@@ -1,0 +1,14 @@
+{
+  "name": "@ornuto/ui-kit",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "license": "MIT",
+  "dependencies": {
+    "iconsax-react-native": "^0.0.8"
+  },
+  "peerDependencies": {
+    "expo-system-ui": "*",
+    "react-native-svg": "*",
+    "@react-navigation/native": "*"
+  }
+}

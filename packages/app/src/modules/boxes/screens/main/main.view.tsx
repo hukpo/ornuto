@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { UIText } from '@/ui-kit';
+import { UIText } from '@ornuto/ui-kit';
 
 export const BoxesMain: FC = () => {
   return (

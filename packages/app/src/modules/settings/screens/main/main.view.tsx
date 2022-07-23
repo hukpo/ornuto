@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { useVm } from '@/hooks';
 import { SettingsMainVm } from './main.vm';
-import { UIList, UIScrollView, UISpacingStyles } from '@/ui-kit';
+import { UIList, UIScrollView, UISpacingStyles } from '@ornuto/ui-kit';
 
 export const SettingsMain: FC = () => {
   const vm = useVm(SettingsMainVm);

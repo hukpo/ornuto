@@ -6,7 +6,7 @@ import { BackHandler, StyleSheet, TextInput, View } from 'react-native';
 
 import { useVm } from '@/hooks';
 import { AuthPhoneVm } from './phone.vm';
-import { UIText, useUI } from '@/ui-kit';
+import { UIText, useUI } from '@ornuto/ui-kit';
 import { HeaderButton } from '@/navigation';
 
 export const AuthPhone = observer(() => {

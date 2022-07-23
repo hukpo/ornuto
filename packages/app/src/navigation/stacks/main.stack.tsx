@@ -6,9 +6,9 @@ import { detailsRef, masterRef, SplitView } from '@ornuto/navigation';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { ThemeStore } from '@/stores';
-import { useInitTheme } from '@/ui-kit';
 import { AuthStack } from './auth.stack';
 import { MasterStack } from './master.stack';
+import { useInitTheme } from '@ornuto/ui-kit';
 import { DetailsStack } from './details.stack';
 import { ScreenName, StackName } from '../constants';
 

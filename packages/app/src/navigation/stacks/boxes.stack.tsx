@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { useUI } from '@/ui-kit';
+import { useUI } from '@ornuto/ui-kit';
 import { BoxesMain } from '@/modules';
 import { ScreenName } from '../constants';
 

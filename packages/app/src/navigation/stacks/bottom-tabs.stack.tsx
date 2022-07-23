@@ -5,7 +5,7 @@ import {
   BottomTabNavigationOptions,
 } from '@react-navigation/bottom-tabs';
 
-import { UIIcon } from '@/ui-kit';
+import { UIIcon } from '@ornuto/ui-kit';
 import { StackName } from '../constants';
 import { BoxesStack } from './boxes.stack';
 import { SettingsStack } from './settings.stack';

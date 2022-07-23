@@ -4,7 +4,7 @@ import { observer } from 'mobx-react-lite';
 import { useTranslation } from 'react-i18next';
 
 import { ThemeStore } from '@/stores';
-import { UIList, UIScrollView, UISpacingStyles } from '@/ui-kit';
+import { UIList, UIScrollView, UISpacingStyles } from '@ornuto/ui-kit';
 
 export const SettingsAutoNightMode = observer(() => {
   const { t } = useTranslation(['settings']);
