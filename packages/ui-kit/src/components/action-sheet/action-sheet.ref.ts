@@ -10,14 +10,10 @@ export type UIActionSheetOptions = {
   buttons: UIActionSheetButton[];
 };
 
-type UIActionSheetRef = {
-  open: (options: UIActionSheetOptions) => void;
-};
+export const UIActionSheetRef = createRef<typeof UIActionSheet>();
 
-export const UIActionSheetRef = createRef<UIActionSheetRef>();
-
-export const UIActionSheet: UIActionSheetRef = {
-  open(opts) {
-    UIActionSheetRef.current?.open(opts);
+export const UIActionSheet = {
+  open(options: UIActionSheetOptions) {
+    UIActionSheetRef.current?.open(options);
   },
 };
