@@ -45,17 +45,15 @@ export const UIActionSheetProvider: FC<UIActionSheetProviderProps> = ({
             entering={SlideInDown.easing(enteringEasing)}
             exiting={SlideOutDown.easing(exitingEasing)}>
             <View style={[styles.buttons, { backgroundColor: colors.tertiary }]}>
-              {options.buttons.map((button, index) => {
-                return (
-                  <ActionSheetButton
-                    key={index}
-                    type={button.type}
-                    title={button.title}
-                    onPress={button.onPress}
-                    containerStyle={!index && styles.firstButton}
-                  />
-                );
-              })}
+              {options.buttons.map((button, index) => (
+                <ActionSheetButton
+                  key={index}
+                  type={button.type}
+                  title={button.title}
+                  onPress={button.onPress}
+                  containerStyle={!index && styles.firstButton}
+                />
+              ))}
             </View>
 
             <ActionSheetButton
