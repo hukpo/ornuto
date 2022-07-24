@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 export enum UISpacing {
+  XS = 10,
   S = 15,
   M = 20,
   L = 25,

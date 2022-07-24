@@ -1,7 +1,13 @@
 import React, { FC, ReactNode } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Animated, { SlideOutDown, SlideInDown, Easing } from 'react-native-reanimated';
+import Animated, {
+  Easing,
+  FadeIn,
+  FadeOut,
+  SlideInDown,
+  SlideOutDown,
+} from 'react-native-reanimated';
 
 import { useUI } from '../../hooks';
 import { UISpacing } from '../../constants';
@@ -13,6 +19,8 @@ type UIActionSheetProviderProps = {
   children: ReactNode;
 };
 
+const AnimatedSafeAreaView = Animated.createAnimatedComponent(SafeAreaView);
+
 export const UIActionSheetProvider: FC<UIActionSheetProviderProps> = ({
   children,
   cancelTitle,
@@ -20,21 +28,30 @@ export const UIActionSheetProvider: FC<UIActionSheetProviderProps> = ({
   const { colors } = useUI();
   const { options, cancel } = useController();
 
+  const enteringEasing = Easing.out(Easing.cubic);
+  const exitingEasing = Easing.in(Easing.cubic);
+
   return (
     <>
       {options ? (
         <Animated.View
           onTouchEnd={cancel}
-          style={styles.container}
-          exiting={SlideOutDown.easing(Easing.in(Easing.cubic))}
-          entering={SlideInDown.easing(Easing.out(Easing.cubic))}>
-          <SafeAreaView edges={['bottom']}>
+          style={styles.fadeContainer}
+          entering={FadeIn.easing(enteringEasing)}
+          exiting={FadeOut.easing(exitingEasing)}>
+          <AnimatedSafeAreaView
+            edges={['bottom']}
+            style={styles.slideContainer}
+            entering={SlideInDown.easing(enteringEasing)}
+            exiting={SlideOutDown.easing(exitingEasing)}>
             <View style={[styles.buttons, { backgroundColor: colors.tertiary }]}>
               {options.buttons.map((button, index) => {
                 return (
                   <ActionSheetButton
                     key={index}
-                    {...button}
+                    type={button.type}
+                    title={button.title}
+                    onPress={button.onPress}
                     containerStyle={!index && styles.firstButton}
                   />
                 );
@@ -44,10 +61,9 @@ export const UIActionSheetProvider: FC<UIActionSheetProviderProps> = ({
             <ActionSheetButton
               onPress={cancel}
               title={cancelTitle}
-              titleStyle={styles.cancelTitle}
               containerStyle={styles.cancelContainer}
             />
-          </SafeAreaView>
+          </AnimatedSafeAreaView>
         </Animated.View>
       ) : null}
 
@@ -57,29 +73,32 @@ export const UIActionSheetProvider: FC<UIActionSheetProviderProps> = ({
 };
 
 const styles = StyleSheet.create({
-  container: {
+  fadeContainer: {
     zIndex: 1000,
     width: '100%',
     height: '100%',
     position: 'absolute',
+    backgroundColor: 'rgba(0,0,0,0.4)',
+  },
+  slideContainer: {
+    width: '100%',
+    height: '100%',
+    maxWidth: 390,
+    alignSelf: 'center',
     justifyContent: 'flex-end',
-    paddingHorizontal: UISpacing.S,
   },
 
   buttons: {
-    borderRadius: 10,
     overflow: 'hidden',
+    borderRadius: UISpacing.XS,
   },
   firstButton: {
     borderTopWidth: 0,
   },
 
   cancelContainer: {
-    marginTop: 10,
-    borderRadius: 10,
     borderTopWidth: 0,
-  },
-  cancelTitle: {
-    fontSize: 18,
+    marginTop: UISpacing.XS,
+    borderRadius: UISpacing.XS,
   },
 });
