@@ -1,7 +1,12 @@
 import React, { FC } from 'react';
 import { UIIcon, useUI } from '@ornuto/ui-kit';
 import { StyleSheet, Pressable, StyleProp, ViewStyle } from 'react-native';
-import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import Animated, {
+  withTiming,
+  interpolate,
+  useSharedValue,
+  useAnimatedStyle,
+} from 'react-native-reanimated';
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
@@ -11,29 +16,25 @@ type BoxAddFABProps = {
 };
 
 const FAB_SIZE = 50;
-const MIN_SCALE = 0.8;
-const DEFAULT_SCALE = 1;
-const ROTATION_DEG = 90;
-const DEFAULT_ROTATION_DEG = 0;
 const ANIMATION_DURATION = 150;
 
 export const BoxAddFAB: FC<BoxAddFABProps> = ({ onPress, style }) => {
   const { colors } = useUI();
-  const scale = useSharedValue(DEFAULT_SCALE);
-  const rotation = useSharedValue(DEFAULT_ROTATION_DEG);
+  const progress = useSharedValue(0);
 
   const onPressIn = (): void => {
-    scale.value = withTiming(MIN_SCALE, { duration: ANIMATION_DURATION });
-    rotation.value = withTiming(ROTATION_DEG, { duration: ANIMATION_DURATION });
+    progress.value = withTiming(1, { duration: ANIMATION_DURATION });
   };
 
   const onPressOut = (): void => {
-    scale.value = withTiming(DEFAULT_SCALE, { duration: ANIMATION_DURATION });
-    rotation.value = withTiming(DEFAULT_ROTATION_DEG, { duration: ANIMATION_DURATION });
+    progress.value = withTiming(0, { duration: ANIMATION_DURATION });
   };
 
   const animatedStyle = useAnimatedStyle(() => ({
-    transform: [{ scale: scale.value }, { rotate: `${rotation.value}deg` }],
+    transform: [
+      { scale: interpolate(progress.value, [0, 1], [1, 0.8]) },
+      { rotate: `${interpolate(progress.value, [0, 1], [0, 90])}deg` },
+    ],
   }));
 
   return (
