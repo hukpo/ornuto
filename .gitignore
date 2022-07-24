@@ -38,3 +38,6 @@ amplifytools.xcconfig
 packages/app/ios
 packages/app/android
 Pods
+
+#jest
+coverage
