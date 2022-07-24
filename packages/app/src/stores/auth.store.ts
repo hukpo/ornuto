@@ -12,7 +12,7 @@ export class AuthStore {
     makeSimpleAutoObservable(this, undefined, { autoBind: true });
   }
 
-  async getUser() {
+  async getUserSession() {
     try {
       this._logger.info('getUser');
 

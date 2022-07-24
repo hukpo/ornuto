@@ -25,13 +25,13 @@ export class AppStore {
     try {
       this._logger.info('main');
 
-      const user = await this._authStore.getUser();
+      const userSession = await this._authStore.getUserSession();
 
-      if (!user) {
+      if (!userSession) {
         return this._navigation.navigate(StackName.AUTH);
       }
 
-      await this._realmDb.init(user.getIdToken().getJwtToken());
+      await this._realmDb.init(userSession.getIdToken().getJwtToken());
     } catch (err) {
       this._logger.error(err);
     } finally {
