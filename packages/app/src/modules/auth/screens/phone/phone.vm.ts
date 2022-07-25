@@ -1,8 +1,9 @@
 import { autoInjectable } from 'tsyringe';
+import { makeSimpleAutoObservable } from '@ornuto/utils';
 
 import { Logger } from '@/utils';
+import { InputStore } from '@/stores';
 import { Navigation, ScreenName } from '@/navigation';
-import { InputStore, makeSimpleAutoObservable } from '@/stores';
 
 @autoInjectable()
 export class AuthPhoneVm {
@@ -12,7 +13,7 @@ export class AuthPhoneVm {
   private _logger = new Logger('AuthPhoneVm');
 
   constructor(private _navigation?: Navigation) {
-    makeSimpleAutoObservable(this, undefined, { autoBind: true });
+    makeSimpleAutoObservable(this);
   }
 
   get nextButtonDisabled() {

@@ -62,5 +62,5 @@ export const makeSimpleAutoObservable: typeof makeAutoObservable = (
     }
   }
 
-  return makeObservable(target, annotations, options);
+  return makeObservable(target, annotations, { autoBind: true, ...options });
 };

@@ -1,10 +1,10 @@
 import { runInAction } from 'mobx';
 import { autoInjectable, singleton } from 'tsyringe';
+import { makeSimpleAutoObservable } from '@ornuto/utils';
 
 import { Logger } from '@/utils';
 import { RealmDb } from '@/database';
 import { AuthStore } from './auth.store';
-import { makeSimpleAutoObservable } from './utils';
 import { Navigation, ScreenName, StackName } from '@/navigation';
 
 @singleton()
@@ -18,7 +18,7 @@ export class AppStore {
     private _authStore?: AuthStore,
     private _navigation?: Navigation,
   ) {
-    makeSimpleAutoObservable(this, undefined, { autoBind: true });
+    makeSimpleAutoObservable(this);
   }
 
   async main() {

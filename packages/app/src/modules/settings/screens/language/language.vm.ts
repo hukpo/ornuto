@@ -1,13 +1,13 @@
 import i18next from 'i18next';
+import { makeSimpleAutoObservable } from '@ornuto/utils';
 
 import { LanguageCode } from '@/types';
-import { makeSimpleAutoObservable } from '@/stores';
 
 export class LanguageVm {
   languageCode = i18next.language as LanguageCode;
 
   constructor() {
-    makeSimpleAutoObservable(this, undefined, { autoBind: true });
+    makeSimpleAutoObservable(this);
   }
 
   selectLanguage(code: LanguageCode) {

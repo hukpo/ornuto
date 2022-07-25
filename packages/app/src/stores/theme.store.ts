@@ -1,8 +1,8 @@
 import { autoInjectable, singleton } from 'tsyringe';
+import { makeSimpleAutoObservable } from '@ornuto/utils';
 
 import { AutoNightMode } from '@/types';
 import { SimpleStorage } from '@/services';
-import { makeSimpleAutoObservable } from './utils';
 
 @singleton()
 @autoInjectable()
@@ -14,7 +14,7 @@ export class ThemeStore {
     this._nightModeToggled = this._storage!.get('nightModeToggled') === 'true';
     this._autoNightMode = this._storage!.get('autoNightMode') || AutoNightMode.SYSTEM;
 
-    makeSimpleAutoObservable(this, undefined, { autoBind: true });
+    makeSimpleAutoObservable(this);
   }
 
   get nightModeEnabled(): boolean {

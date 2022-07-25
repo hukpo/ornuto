@@ -1,8 +1,9 @@
 import { autoInjectable } from 'tsyringe';
+import { makeSimpleAutoObservable } from '@ornuto/utils';
 
 import { Logger } from '@/utils';
+import { InputStore } from '@/stores';
 import { Navigation } from '@/navigation';
-import { InputStore, makeSimpleAutoObservable } from '@/stores';
 
 @autoInjectable()
 export class AuthCodeVm {
@@ -11,7 +12,7 @@ export class AuthCodeVm {
   private _logger = new Logger('AuthCodeVm');
 
   constructor(private _navigation?: Navigation) {
-    makeSimpleAutoObservable(this, undefined, { autoBind: true });
+    makeSimpleAutoObservable(this);
   }
 
   get nextButtonDisabled() {

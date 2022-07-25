@@ -1,8 +1,8 @@
 import { Auth } from 'aws-amplify';
 import { singleton } from 'tsyringe';
+import { makeSimpleAutoObservable } from '@ornuto/utils';
 
 import { Logger } from '@/utils';
-import { makeSimpleAutoObservable } from './utils';
 
 type Session = {
   getToken(): string;
@@ -13,7 +13,7 @@ export class AuthStore {
   private _logger = new Logger('🔑|AuthStore');
 
   constructor() {
-    makeSimpleAutoObservable(this, undefined, { autoBind: true });
+    makeSimpleAutoObservable(this);
   }
 
   async getSession(): Promise<Session | null> {

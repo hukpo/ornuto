@@ -1,12 +1,13 @@
 import { autoInjectable } from 'tsyringe';
+import { makeSimpleAutoObservable } from '@ornuto/utils';
 
+import { ThemeStore } from '@/stores';
 import { Navigation, ScreenName } from '@/navigation';
-import { makeSimpleAutoObservable, ThemeStore } from '@/stores';
 
 @autoInjectable()
 export class AppearanceVm {
   constructor(private _themeStore?: ThemeStore, private _navigation?: Navigation) {
-    makeSimpleAutoObservable(this, undefined, { autoBind: true });
+    makeSimpleAutoObservable(this);
   }
 
   get nightModeEnabled() {
