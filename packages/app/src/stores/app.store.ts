@@ -5,7 +5,7 @@ import { Logger } from '@/utils';
 import { RealmDb } from '@/database';
 import { AuthStore } from './auth.store';
 import { makeSimpleAutoObservable } from './utils';
-import { Navigation, StackName } from '@/navigation';
+import { Navigation, ScreenName, StackName } from '@/navigation';
 
 @singleton()
 @autoInjectable()
@@ -14,9 +14,9 @@ export class AppStore {
   private _logger = new Logger('📺|AppStore');
 
   constructor(
-    private _realmDb: RealmDb,
-    private _authStore: AuthStore,
-    private _navigation: Navigation,
+    private _realmDb?: RealmDb,
+    private _authStore?: AuthStore,
+    private _navigation?: Navigation,
   ) {
     makeSimpleAutoObservable(this, undefined, { autoBind: true });
   }
@@ -25,15 +25,17 @@ export class AppStore {
     try {
       this._logger.info('main');
 
-      const userSession = await this._authStore.getUserSession();
+      const userSession = await this._authStore!.getSession();
 
       if (!userSession) {
-        return this._navigation.navigate(StackName.AUTH);
+        this._navigation!.navigate(StackName.AUTH);
+      } else {
+        await this._realmDb!.init(userSession.getToken());
       }
-
-      await this._realmDb.init(userSession.getIdToken().getJwtToken());
     } catch (err) {
       this._logger.error(err);
+
+      this._navigation!.navigate(ScreenName.ERRORS_MAIN);
     } finally {
       runInAction(() => (this.isLoaded = true));
     }

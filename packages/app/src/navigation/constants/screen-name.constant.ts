@@ -17,4 +17,7 @@ export enum ScreenName {
 
   // Tips
   TIPS_MAIN = '[Tips] Main',
+
+  // Errors
+  ERRORS_MAIN = '[Errors] Main',
 }

@@ -4,6 +4,10 @@ import { singleton } from 'tsyringe';
 import { Logger } from '@/utils';
 import { makeSimpleAutoObservable } from './utils';
 
+type Session = {
+  getToken(): string;
+};
+
 @singleton()
 export class AuthStore {
   private _logger = new Logger('🔑|AuthStore');
@@ -12,11 +16,15 @@ export class AuthStore {
     makeSimpleAutoObservable(this, undefined, { autoBind: true });
   }
 
-  async getUserSession() {
+  async getSession(): Promise<Session | null> {
     try {
-      this._logger.info('getUser');
+      this._logger.info('getSession');
 
-      return await Auth.currentSession();
+      const session = await Auth.currentSession();
+
+      return {
+        getToken: () => session.getIdToken().getJwtToken(),
+      };
     } catch {
       return null;
     }

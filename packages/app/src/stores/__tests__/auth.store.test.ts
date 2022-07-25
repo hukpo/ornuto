@@ -17,12 +17,14 @@ describe('AuthStore', () => {
 
     jest.spyOn(Auth, 'currentSession').mockResolvedValue(userSession);
 
-    expect(await new AuthStore().getUserSession()).toBe(userSession);
+    const session = await new AuthStore().getSession();
+
+    expect(session?.getToken()).toBe('IdToken');
   });
 
   it('should NOT return session', async () => {
-    jest.spyOn(Auth, 'currentSession').mockRejectedValue('no user found');
+    jest.spyOn(Auth, 'currentSession').mockRejectedValue(null);
 
-    expect(await new AuthStore().getUserSession()).toBeNull();
+    expect(await new AuthStore().getSession()).toBeNull();
   });
 });
