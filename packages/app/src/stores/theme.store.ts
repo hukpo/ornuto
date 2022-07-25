@@ -10,9 +10,9 @@ export class ThemeStore {
   private _nightModeToggled: boolean;
   private _autoNightMode: AutoNightMode;
 
-  constructor(private _storage: SimpleStorage) {
-    this._nightModeToggled = this._storage.get('nightModeToggled') === 'true';
-    this._autoNightMode = this._storage.get('autoNightMode') || AutoNightMode.SYSTEM;
+  constructor(private _storage?: SimpleStorage) {
+    this._nightModeToggled = this._storage!.get('nightModeToggled') === 'true';
+    this._autoNightMode = this._storage!.get('autoNightMode') || AutoNightMode.SYSTEM;
 
     makeSimpleAutoObservable(this, undefined, { autoBind: true });
   }
@@ -22,16 +22,12 @@ export class ThemeStore {
   }
 
   get nightModeToggled(): boolean {
-    if (this.nightModeEnabled) {
-      return this._nightModeToggled;
-    }
-
-    return false;
+    return this.nightModeEnabled && this._nightModeToggled;
   }
   setNightModeToggled(value: boolean) {
     this._nightModeToggled = value;
 
-    this._storage.set('nightModeToggled', value ? 'true' : 'false');
+    this._storage!.set('nightModeToggled', value ? 'true' : 'false');
   }
 
   get isSystemAutoNightMode(): boolean {
@@ -43,7 +39,7 @@ export class ThemeStore {
   setAutoNightMode(value: AutoNightMode) {
     this._autoNightMode = value;
 
-    this._storage.set('autoNightMode', value);
+    this._storage!.set('autoNightMode', value);
   }
 
   selectSystemMode(): void {

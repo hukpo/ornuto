@@ -5,8 +5,14 @@ import { CognitoAccessToken, CognitoIdToken, CognitoUserSession } from 'amazon-c
 import { AuthStore } from '../auth.store';
 
 describe('AuthStore', () => {
+  let authStore: AuthStore;
+
+  beforeEach(() => {
+    authStore = new AuthStore();
+  });
+
   it('should be observable', () => {
-    expect(isObservable(new AuthStore())).toBe(true);
+    expect(isObservable(authStore)).toBe(true);
   });
 
   it('should return session', async () => {
@@ -17,7 +23,7 @@ describe('AuthStore', () => {
 
     jest.spyOn(Auth, 'currentSession').mockResolvedValue(userSession);
 
-    const session = await new AuthStore().getSession();
+    const session = await authStore.getSession();
 
     expect(session?.getToken()).toBe('IdToken');
   });
@@ -25,6 +31,6 @@ describe('AuthStore', () => {
   it('should NOT return session', async () => {
     jest.spyOn(Auth, 'currentSession').mockRejectedValue(null);
 
-    expect(await new AuthStore().getSession()).toBeNull();
+    expect(await authStore.getSession()).toBeNull();
   });
 });

@@ -19,7 +19,7 @@ describe('AppStore', () => {
   });
 
   it('should be observable', () => {
-    expect(isObservable(new AppStore())).toBe(true);
+    expect(isObservable(appStore)).toBe(true);
   });
 
   it('should open auth screen if no session found', async () => {
