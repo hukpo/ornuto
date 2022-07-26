@@ -27,14 +27,14 @@ export const UIActionSheetProvider: FC<UIActionSheetProviderProps> = ({
   children,
   cancelTitle,
 }) => {
+  const c = useController();
   const { colors } = useUI();
-  const { options, cancel } = useController();
 
   return (
     <>
-      {options ? (
+      {c.options ? (
         <Animated.View
-          onTouchEnd={cancel}
+          onTouchEnd={c.cancel}
           style={styles.fadeContainer}
           entering={FadeIn.easing(enteringEasing)}
           exiting={FadeOut.easing(exitingEasing)}>
@@ -44,7 +44,7 @@ export const UIActionSheetProvider: FC<UIActionSheetProviderProps> = ({
             entering={SlideInDown.easing(enteringEasing)}
             exiting={SlideOutDown.easing(exitingEasing)}>
             <View style={[styles.buttons, { backgroundColor: colors.tertiary }]}>
-              {options.buttons.map((button, index) => (
+              {c.options.buttons.map((button, index) => (
                 <ActionSheetButton
                   key={index}
                   type={button.type}
@@ -56,7 +56,7 @@ export const UIActionSheetProvider: FC<UIActionSheetProviderProps> = ({
             </View>
 
             <ActionSheetButton
-              onPress={cancel}
+              onPress={c.cancel}
               title={cancelTitle}
               containerStyle={styles.cancelContainer}
             />

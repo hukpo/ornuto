@@ -1,29 +1,12 @@
 import React, { FC } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { UIActionSheet, UISpacing, UIText } from '@ornuto/ui-kit';
+import { UISpacing, UIText } from '@ornuto/ui-kit';
 
 import { BoxAddFAB } from './views';
+import { useController } from './main.controller';
 
 export const BoxesMain: FC = () => {
-  const onPress = () => {
-    UIActionSheet.open({
-      buttons: [
-        {
-          title: 'Create Folder',
-          onPress: () => {
-            console.log('Create Folder');
-          },
-        },
-        {
-          title: 'Create Chat',
-          onPress: () => {
-            console.log('Create Chat');
-          },
-          type: 'destructive',
-        },
-      ],
-    });
-  };
+  const c = useController();
 
   return (
     <>
@@ -31,7 +14,7 @@ export const BoxesMain: FC = () => {
         <UIText>Boxes Main</UIText>
       </View>
 
-      <BoxAddFAB onPress={onPress} style={styles.fab} />
+      <BoxAddFAB onPress={c.onAddPress} style={styles.fab} />
     </>
   );
 };
