@@ -10,31 +10,31 @@ export class NavigationHelper<
   PARAMS extends Partial<Record<NAME, any>>,
   NAME extends string = string,
 > {
-  navigate = <T extends NAME>(
+  navigate<T extends NAME>(
     ...args: undefined extends PARAMS[T]
       ? [name: T]
       : Partial<PARAMS[T]> extends PARAMS[T]
       ? [name: T] | [name: T, params: PARAMS[T]]
       : [name: T, params: PARAMS[T]]
-  ): void => {
+  ): void {
     const [screenName, params] = args;
 
     this.eachRef(ref => ref?.navigate(screenName, params || {}));
-  };
+  }
 
-  push = <T extends NAME>(
+  push<T extends NAME>(
     ...args: undefined extends PARAMS[T]
       ? [name: T]
       : Partial<PARAMS[T]> extends PARAMS[T]
       ? [name: T] | [name: T, params: PARAMS[T]]
       : [name: T, params: PARAMS[T]]
-  ): void => {
+  ): void {
     const [screenName, params] = args;
 
     this.eachRef(ref => ref?.dispatch(StackActions.push(screenName, params)));
-  };
+  }
 
-  private eachRef = (cb: (ref: NavigationRef | null) => void) => {
+  private eachRef(cb: (ref: NavigationRef | null) => void) {
     const error = console.error;
     console.error = () => null;
 
@@ -42,5 +42,5 @@ export class NavigationHelper<
     cb(detailsRef.current);
 
     console.error = error;
-  };
+  }
 }

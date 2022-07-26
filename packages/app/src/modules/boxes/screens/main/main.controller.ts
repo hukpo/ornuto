@@ -26,7 +26,6 @@ export const useController = () => {
         },
         {
           title: t('createChat'),
-          type: 'destructive',
           onPress: () => {
             navigation.navigate(ScreenName.BOXES_CREATE, {
               parentId,

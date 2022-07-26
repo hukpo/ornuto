@@ -23,7 +23,7 @@ describe('AppStore', () => {
   });
 
   it('should open auth screen if no session found', async () => {
-    const navigate = jest.spyOn(navigation, 'navigate').mockReturnValue();
+    const navigate = jest.spyOn(navigation, 'navigate');
     const getSession = jest.spyOn(authStore, 'getSession').mockResolvedValue(null);
 
     await appStore.main();
@@ -48,7 +48,7 @@ describe('AppStore', () => {
 
   it('should catch an error', async () => {
     jest.spyOn(authStore, 'getSession').mockRejectedValue(null);
-    const navigate = jest.spyOn(navigation, 'navigate').mockReturnValue();
+    const navigate = jest.spyOn(navigation, 'navigate');
 
     await appStore.main();
 

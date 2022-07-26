@@ -14,3 +14,12 @@ NativeModules.RNCNetInfo = {
   addListener: jest.fn(),
   removeListeners: jest.fn(),
 };
+
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({ t: str => str }),
+}));
+
+jest.mock('i18next', () => ({
+  init: jest.fn(),
+  use: jest.fn().mockReturnThis(),
+}));
