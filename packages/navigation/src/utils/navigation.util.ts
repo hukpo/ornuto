@@ -6,12 +6,31 @@ type NavigationRef = NavigationContainerRef<Record<string, object>>;
 export const masterRef = createRef<NavigationRef>();
 export const detailsRef = createRef<NavigationRef>();
 
-export class NavigationHelper<P extends Record<T, any>, T extends string = string> {
-  navigate = <N extends T>(screenName: N, params = {} as P[N]): void => {
-    this.eachRef(ref => ref?.navigate(screenName, params));
+export class NavigationHelper<
+  PARAMS extends Partial<Record<NAME, any>>,
+  NAME extends string = string,
+> {
+  navigate = <T extends NAME>(
+    ...args: undefined extends PARAMS[T]
+      ? [name: T]
+      : Partial<PARAMS[T]> extends PARAMS[T]
+      ? [name: T] | [name: T, params: PARAMS[T]]
+      : [name: T, params: PARAMS[T]]
+  ): void => {
+    const [screenName, params] = args;
+
+    this.eachRef(ref => ref?.navigate(screenName, params || {}));
   };
 
-  push = <N extends T>(screenName: N, params = {} as P[N]): void => {
+  push = <T extends NAME>(
+    ...args: undefined extends PARAMS[T]
+      ? [name: T]
+      : Partial<PARAMS[T]> extends PARAMS[T]
+      ? [name: T] | [name: T, params: PARAMS[T]]
+      : [name: T, params: PARAMS[T]]
+  ): void => {
+    const [screenName, params] = args;
+
     this.eachRef(ref => ref?.dispatch(StackActions.push(screenName, params)));
   };
 

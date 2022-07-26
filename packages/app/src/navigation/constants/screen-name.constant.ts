@@ -8,6 +8,7 @@ export enum ScreenName {
 
   // Boxes
   BOXES_MAIN = '[Boxes] Main',
+  BOXES_CREATE = '[Boxes] Create',
 
   // Settings
   SETTINGS_MAIN = '[Settings] Main',

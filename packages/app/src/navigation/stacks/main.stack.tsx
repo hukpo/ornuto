@@ -13,6 +13,7 @@ import { MasterStack } from './master.stack';
 import { DetailsStack } from './details.stack';
 import { ScreenName, StackName } from '../constants';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { BoxesCreate } from '@/modules';
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
@@ -51,6 +52,12 @@ export const MainStack = observer(() => {
                 headerShown: false,
                 presentation: 'fullScreenModal',
               }}
+            />
+
+            <Screen
+              name={ScreenName.BOXES_CREATE}
+              component={BoxesCreate}
+              options={{ presentation: 'modal' }}
             />
           </Navigator>
         </UIActionSheetProvider>

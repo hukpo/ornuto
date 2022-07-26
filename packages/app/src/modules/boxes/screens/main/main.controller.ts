@@ -1,21 +1,38 @@
+import { container } from 'tsyringe';
 import { UIActionSheet } from '@ornuto/ui-kit';
+import { useTranslation } from 'react-i18next';
+
+import { BoxType } from '../../types';
+import { Navigation, ScreenName, useParams } from '@/navigation';
 
 export const useController = () => {
+  const { t } = useTranslation(['boxes']);
+  const navigation = container.resolve(Navigation);
+  const params = useParams<ScreenName.BOXES_MAIN>();
+
   const onAddPress = () => {
+    const parentId = params ? params.parentId : null;
+
     UIActionSheet.open({
       buttons: [
         {
-          title: 'Create Folder',
+          title: t('createFolder'),
           onPress: () => {
-            console.log('Create Folder');
+            navigation.navigate(ScreenName.BOXES_CREATE, {
+              parentId,
+              type: BoxType.FOLDER,
+            });
           },
         },
         {
-          title: 'Create Chat',
-          onPress: () => {
-            console.log('Create Chat');
-          },
+          title: t('createChat'),
           type: 'destructive',
+          onPress: () => {
+            navigation.navigate(ScreenName.BOXES_CREATE, {
+              parentId,
+              type: BoxType.CHAT,
+            });
+          },
         },
       ],
     });

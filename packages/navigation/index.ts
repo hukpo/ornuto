@@ -1,6 +1,7 @@
 export {
   masterRef,
   detailsRef,
+  createUseParams,
   NavigationHelper,
   SplitView,
   SplitViewProps,
