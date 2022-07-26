@@ -19,6 +19,8 @@ type UIActionSheetProviderProps = {
   children: ReactNode;
 };
 
+const enteringEasing = Easing.out(Easing.cubic);
+const exitingEasing = Easing.in(Easing.cubic);
 const AnimatedSafeAreaView = Animated.createAnimatedComponent(SafeAreaView);
 
 export const UIActionSheetProvider: FC<UIActionSheetProviderProps> = ({
@@ -27,9 +29,6 @@ export const UIActionSheetProvider: FC<UIActionSheetProviderProps> = ({
 }) => {
   const { colors } = useUI();
   const { options, cancel } = useController();
-
-  const enteringEasing = Easing.out(Easing.cubic);
-  const exitingEasing = Easing.in(Easing.cubic);
 
   return (
     <>
@@ -84,6 +83,7 @@ const styles = StyleSheet.create({
     maxWidth: 390,
     alignSelf: 'center',
     justifyContent: 'flex-end',
+    paddingHorizontal: UISpacing.S,
   },
 
   buttons: {
