@@ -5,9 +5,8 @@ import { useTranslation } from 'react-i18next';
 import { BoxType } from '../../types';
 import { Navigation, ScreenName, useParams } from '@/navigation';
 
-export const useController = () => {
+export const useController = (navigation = container.resolve(Navigation)) => {
   const { t } = useTranslation(['boxes']);
-  const navigation = container.resolve(Navigation);
   const params = useParams<ScreenName.BOXES_MAIN>();
 
   const onAddPress = () => {
