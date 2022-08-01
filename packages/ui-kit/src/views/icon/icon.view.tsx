@@ -3,22 +3,25 @@ import { StyleProp, ViewStyle } from 'react-native';
 import Svg, { Circle, G, Path } from 'react-native-svg';
 import { Box, Setting2, Send, Trash, Global, Blur, Paperclip2 } from 'iconsax-react-native';
 
+export enum IconName {
+  BOX = 'box',
+  GEAR = 'gear',
+  TRASH = 'trash',
+  GLOBAL = 'global',
+  BLUR = 'blur',
+  ARROW_LEFT = 'arrow.left',
+  ARROW_RIGHT = 'arrow.right',
+  CHECKMARK = 'checkmark',
+  PAPERCLIP = 'paperclip',
+  PENCIL = 'pencil',
+  CLOSE = 'close',
+  SEND = 'send',
+  CAMERA = 'camera',
+  PLUS = 'plus',
+}
+
 export type UIIconProps = {
-  name:
-    | 'box'
-    | 'gear'
-    | 'trash'
-    | 'global'
-    | 'blur'
-    | 'arrow.left'
-    | 'arrow.right'
-    | 'checkmark'
-    | 'paperclip'
-    | 'pencil'
-    | 'close'
-    | 'send'
-    | 'camera'
-    | 'plus';
+  name: `${IconName}`;
   color: string;
 
   size?: number;
@@ -27,7 +30,14 @@ export type UIIconProps = {
   style?: StyleProp<ViewStyle>;
 };
 
-export const UIIcon: FC<UIIconProps> = ({ style, name, color, size, width = 0, height = 0 }) => {
+export const UIIcon: FC<UIIconProps> = ({
+  style,
+  name,
+  color,
+  size = 0,
+  width = 0,
+  height = size,
+}) => {
   switch (name) {
     case 'box':
       return <Box style={style} size={size} color={color} />;

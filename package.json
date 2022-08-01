@@ -9,8 +9,10 @@
     "packages/*"
   ],
   "scripts": {
+    "u": "yarn workspace @ornuto/ui",
     "a": "yarn workspace @ornuto/app",
-    "tsc:check": "tsc --noEmit --skipLibCheck"
+    "tsc:check": "tsc --noEmit --skipLibCheck",
+    "reset": "find . -type dir -name node_modules | xargs rm -rf && rm -rf yarn.lock"
   },
   "devDependencies": {
     "@react-native-community/eslint-config": "^3.0.3",

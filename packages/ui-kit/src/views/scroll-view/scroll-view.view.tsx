@@ -1,11 +1,8 @@
-import React, { FC, ReactNode } from 'react';
-import { ScrollView as RNScrollView, StyleProp, ViewStyle } from 'react-native';
+import React, { FC } from 'react';
+import { ScrollView as RNScrollView, ScrollViewProps } from 'react-native';
 
-export type UIScrollViewProps = {
-  style?: StyleProp<ViewStyle>;
-  children: ReactNode;
-};
+export type UIScrollViewProps = ScrollViewProps;
 
-export const UIScrollView: FC<UIScrollViewProps> = ({ children, style }) => {
-  return <RNScrollView style={style}>{children}</RNScrollView>;
+export const UIScrollView: FC<UIScrollViewProps> = props => {
+  return <RNScrollView {...props} />;
 };

@@ -5,8 +5,8 @@ import { Theme } from '../types';
 import { DARK_THEME, LIGHT_THEME } from '../themes';
 
 type InitThemeOptions = {
-  isSystem: boolean;
-  isNightModeEnabled: boolean;
+  isSystem?: boolean;
+  isNightModeEnabled?: boolean;
 };
 
 export const useInitTheme = (options: InitThemeOptions): Theme => {
