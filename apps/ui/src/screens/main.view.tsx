@@ -6,7 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ScreenName } from '../navigation';
 
-const screens = [ScreenName.UI_ACTION_SHEET, ScreenName.ICON];
+const screens = [ScreenName.UI_ACTION_SHEET, ScreenName.UI_ICON];
 
 export const MainScreen: FC = () => {
   const { navigate } = useNavigation();
@@ -19,7 +19,7 @@ export const MainScreen: FC = () => {
             // @ts-ignore
             const onPress = () => navigate(screen);
 
-            return <UIList.Item title={screen} hasArrow onPress={onPress} />;
+            return <UIList.Item key={screen} title={screen} hasArrow onPress={onPress} />;
           })}
         </UIList.Container>
       </SafeAreaView>

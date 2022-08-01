@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import { StyleSheet } from 'react-native';
-import { IconName, UIList, UIScrollView } from '@ornuto/ui-kit';
+import { UIIconName, UIList, UIScrollView } from '@ornuto/ui-kit';
 
-export const IconScreen: FC = () => {
+export const UIIconScreen: FC = () => {
   return (
     <UIScrollView style={styles.container} contentInsetAdjustmentBehavior="automatic">
       <UIList.Container>
-        {Object.values(IconName).map(iconName => {
+        {Object.values(UIIconName).map(iconName => {
           return <UIList.Item iconName={iconName} key={iconName} title={iconName} />;
         })}
       </UIList.Container>
